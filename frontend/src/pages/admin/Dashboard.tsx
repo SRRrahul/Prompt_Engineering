@@ -19,7 +19,7 @@ interface ResultEntry {
   totalScore: number; maxScore: number; percentage: number;
   answeredCount: number; gradedCount: number; totalQuestions: number; rank?: number;
 }
-interface AnswerEntry { id: string; answerText: string; wordCount: number; aiScore: number | null; aiFeedback: string | null; adminOverrideScore: number | null; adminNotes: string | null; submittedAt: string | null; session: { status: string; user: { id: string; name: string; username: string; email: string; department?: string; } }; question: { id: string; text: string; modelAnswer: string; rubric: string; marks: number; } }
+interface AnswerEntry { id: string; answerText: string; wordCount: number; aiScore: number | null; aiFeedback: string | null; accuracyPercentage?: number; matchedPoints?: string; missingPoints?: string; adminOverrideScore: number | null; adminNotes: string | null; submittedAt: string | null; session: { status: string; user: { id: string; name: string; username: string; email: string; department?: string; } }; question: { id: string; text: string; modelAnswer: string; rubric: string; marks: number; } }
 interface ExamSettings { timerDurationMinutes: number; questionsPerExam: number; minWordCount: number; maxViolationsBeforeAutoSubmit: number; }
 
 /* ═══════════ Helpers ═══════════ */

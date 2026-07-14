@@ -16,7 +16,7 @@ interface ResultData {
 }
 
 export default function ExaminerResult() {
-  const { user } = useExaminerAuth();
+  const { logout } = useExaminerAuth();
   const navigate = useNavigate();
   const [data, setData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);

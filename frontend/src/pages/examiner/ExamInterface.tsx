@@ -372,7 +372,6 @@ export default function ExamInterface() {
             const text = answers[q.id] || '';
             const wc = text.trim().split(/\s+/).filter(Boolean).length;
             const done = wc > 0;
-            const started = wc > 0;
             return (
               <button
                 key={q.id}
