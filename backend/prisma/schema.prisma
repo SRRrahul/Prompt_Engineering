@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  role         String        // 'admin' or 'examiner'
+  name         String
+  email        String        @unique
+  username     String        @unique
+  passwordHash String
+  department   String?
+  examStatus   String
+  registeredAt String
+  examSessions ExamSession[]
+}
+
+model Question {
+  id          String   @id @default(uuid())
+  text        String
+  modelAnswer String
+  rubric      String
+  marks       Int
+  createdBy   String?
+  createdAt   String
+  answers     Answer[]
+}
+
+model ExamSession {
+  id              String   @id @default(uuid())
+  examinerId      String
+  questionOrder   String   // Stored as JSON string
+  startTime       String?
+  endTime         String?
+  status          String   // 'not_started', 'in_progress', 'completed', 'auto_submitted', 'time_expired'
+  violationCount  Int      @default(0)
+  violationLog    String   @default("[]") // Stored as JSON string
+  durationMinutes Int
+  user            User     @relation(fields: [examinerId], references: [id])
+  answers         Answer[]
+}
+
+model Answer {
+  id           String      @id @default(uuid())
+  sessionId    String
+  questionId   String
+  examinerId   String
+  answerText   String
+  wordCount    Int
+  aiScore      Float?
+  aiFeedback   String?
+  isGraded     Boolean     @default(false)
+  submittedAt  String?
+  gradingError Boolean?
+  accuracyPercentage Float?
+  matchedPoints      String?
+  missingPoints      String?
+  adminOverrideScore Float?
+  adminNotes   String?
+  session      ExamSession @relation(fields: [sessionId], references: [id])
+  question     Question    @relation(fields: [questionId], references: [id])
+}
+
+model Settings {
+  id                            String @id @default("singleton")
+  timerDurationMinutes          Int
+  questionsPerExam              Int
+  minWordCount                  Int
+  maxViolationsBeforeAutoSubmit Int
+}
