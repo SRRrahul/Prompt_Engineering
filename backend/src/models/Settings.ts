@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document, model } from 'mongoose';
 
-export interface ISettings extends Document {
+export interface ISettings {
   _id: string;
   timerDurationMinutes: number;
   questionsPerExam: number;

@@ -2,7 +2,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import bcrypt from 'bcryptjs';
-import prisma, { uid } from './config/db';
+import User from './models/User';
+import Question from './models/Question';
+import Settings from './models/Settings';
+import mongoose from 'mongoose';
 
 const SAMPLE_QUESTIONS = [
   { text: 'Define prompt engineering and explain its significance in the context of large language models. Describe at least three key principles that make a prompt effective.', modelAnswer: 'Prompt engineering is the practice of designing and refining inputs to AI language models to elicit desired outputs. It is significant because the quality of the prompt directly affects the quality, accuracy, and relevance of the model output. Key principles include: (1) Clarity and specificity — prompts should be unambiguous and precise; (2) Context provision — providing relevant background information helps the model understand the task; (3) Output formatting — specifying the desired format constrains the response appropriately; (4) Role assignment — instructing the model to act as an expert improves domain-specific responses.', rubric: 'Award marks for: correct definition (2), explanation of significance (2), each valid principle with explanation (2 each, max 6). Total: 10 marks.', marks: 10 },
@@ -17,50 +20,49 @@ const SAMPLE_QUESTIONS = [
 
 async function seed() {
   console.log('🌱 Seeding GTEC database...\n');
+  
+  if (!process.env.MONGODB_URI) throw new Error('MONGODB_URI is missing');
+  await mongoose.connect(process.env.MONGODB_URI);
 
   const adminEmail = process.env.ADMIN_SEED_EMAIL || 'admin@gtec.edu';
   const adminPassword = process.env.ADMIN_SEED_PASSWORD || 'Admin@GTEC2024';
   const adminName = process.env.ADMIN_SEED_NAME || 'GTEC Administrator';
 
-  const existingAdmin = await prisma.user.findUnique({ where: { email: adminEmail } });
+  const existingAdmin = await User.findOne({ email: adminEmail });
   if (!existingAdmin) {
     const passwordHash = await bcrypt.hash(adminPassword, 12);
-    await prisma.user.create({
-      data: {
-        id: '00000000-admin-0000-0000-000000000000',
-        role: 'admin', name: adminName, email: adminEmail,
-        username: 'admin', passwordHash,
-        examStatus: 'not_started', registeredAt: new Date().toISOString(),
-      }
+    await User.create({
+      _id: '00000000-admin-0000-0000-000000000000',
+      role: 'admin', name: adminName, email: adminEmail,
+      username: 'admin', passwordHash,
+      examStatus: 'not_started', registeredAt: new Date().toISOString(),
     });
     console.log(`✅ Admin seeded: ${adminEmail} / ${adminPassword}`);
   } else {
     console.log(`ℹ️  Admin already exists: ${adminEmail}`);
   }
 
-  const questionsCount = await prisma.question.count();
+  const questionsCount = await Question.countDocuments();
   if (questionsCount === 0) {
     const qs = SAMPLE_QUESTIONS.map(q => ({
-      ...q, id: `q-${Math.random().toString(36).slice(2, 10)}`,
+      ...q,
+      _id: `q-${Math.random().toString(36).slice(2, 10)}`,
       createdBy: '00000000-admin-0000-0000-000000000000',
-      createdAt: new Date().toISOString(),
     }));
-    await prisma.question.createMany({ data: qs });
+    await Question.insertMany(qs);
     console.log(`✅ Seeded ${qs.length} sample questions`);
   } else {
     console.log(`ℹ️  Questions already exist (${questionsCount} found) — skipping`);
   }
   
-  const settingsCount = await prisma.settings.count();
+  const settingsCount = await Settings.countDocuments();
   if (settingsCount === 0) {
-    await prisma.settings.create({
-      data: {
-        id: 'singleton',
-        timerDurationMinutes: 60,
-        questionsPerExam: 5,
-        minWordCount: 250,
-        maxViolationsBeforeAutoSubmit: 5
-      }
+    await Settings.create({
+      _id: 'singleton',
+      timerDurationMinutes: 60,
+      questionsPerExam: 5,
+      minWordCount: 250,
+      maxViolationsBeforeAutoSubmit: 5
     });
   }
 
