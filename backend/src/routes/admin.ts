@@ -194,12 +194,13 @@ router.get('/answers', async (req: AuthRequest, res: Response) => {
 
   const answers = await Promise.all(rawAnswers.map(async (a: any) => {
     const session = await ExamSession.findById(a.sessionId);
-    const user = session ? await User.findById(session.examinerId, 'id name username email department') : null;
-    const question = await Question.findById(a.questionId, 'id text modelAnswer rubric marks');
+    const user = session ? await User.findById(session.examinerId, 'name username email department') : null;
+    const question = await Question.findById(a.questionId);
     return {
       ...a.toObject(),
-      session: session ? { ...session.toObject(), user } : null,
-      question,
+      id: a._id,
+      session: session ? { ...session.toObject(), id: session._id, user } : null,
+      question: question ? { ...question.toObject(), id: question._id } : null,
     };
   }));
 

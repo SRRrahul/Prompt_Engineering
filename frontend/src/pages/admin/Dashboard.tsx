@@ -647,17 +647,17 @@ export default function AdminDashboard() {
                           {answersData.answers.map(ans => (
                             <tr key={ans.id}>
                               <td>
-                                <div style={{ fontWeight: 600 }}>{ans.session.user.name}</div>
-                                <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{ans.session.user.department || ans.session.user.username}</div>
+                                <div style={{ fontWeight: 600 }}>{ans.session?.user?.name || 'Unknown Student'}</div>
+                                <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{ans.session?.user?.department || ans.session?.user?.username || '—'}</div>
                               </td>
-                              <td style={{ fontSize: '0.85rem' }}>{ans.question.text.slice(0, 50)}...</td>
+                              <td style={{ fontSize: '0.85rem' }}>{ans.question?.text?.slice(0, 50) || 'Deleted Question'}...</td>
                               <td>{ans.wordCount}</td>
                               <td>
-                                {ans.adminOverrideScore !== null ? (
-                                  <span className="badge badge-warning">{ans.adminOverrideScore} / {ans.question.marks} (Override)</span>
+                                {ans.adminOverrideScore !== null && ans.adminOverrideScore !== undefined ? (
+                                  <span className="badge badge-warning">{ans.adminOverrideScore} / {ans.question?.marks || '?'} (Override)</span>
                                 ) : ans.accuracyPercentage != null ? (
                                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                    <span className="badge badge-mint">{ans.aiScore} / {ans.question.marks}</span>
+                                    <span className="badge badge-mint">{ans.aiScore} / {ans.question?.marks || '?'}</span>
                                     <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Acc: {ans.accuracyPercentage}%</span>
                                   </div>
                                 ) : (
@@ -698,17 +698,17 @@ export default function AdminDashboard() {
                 return (
                   <div className="card animate-fade-in">
                     <div className="card-header" style={{ background: 'var(--primary)' }}>
-                      <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>Reviewing Answer from {ans.session.user.name}</h3>
+                      <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>Reviewing Answer from {ans.session?.user?.name || 'Unknown'}</h3>
                     </div>
                     <div className="card-body">
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                         <div>
-                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Question ({ans.question.marks} marks)</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question.text}</p>
+                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Question ({ans.question?.marks || 0} marks)</h4>
+                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.text || 'Question missing'}</p>
                           <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Model Answer</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question.modelAnswer}</p>
+                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.modelAnswer || 'Model answer missing'}</p>
                           <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Rubric</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question.rubric}</p>
+                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.rubric || 'Rubric missing'}</p>
                         </div>
                         <div>
                           <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Student\'s Answer ({ans.wordCount} words)</h4>
@@ -719,7 +719,7 @@ export default function AdminDashboard() {
                             <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Gemini AI Evaluation</h4>
                             {ans.aiScore !== null ? (
                               <>
-                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--secondary-dark)', marginBottom: '8px' }}>Score: {ans.aiScore} / {ans.question.marks} {ans.accuracyPercentage != null && <span style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginLeft: '8px' }}>(Accuracy: {ans.accuracyPercentage}%)</span>}</div>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--secondary-dark)', marginBottom: '8px' }}>Score: {ans.aiScore} / {ans.question?.marks || '?'} {ans.accuracyPercentage != null && <span style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginLeft: '8px' }}>(Accuracy: {ans.accuracyPercentage}%)</span>}</div>
                                 <p style={{ fontSize: '0.9rem', marginBottom: '16px' }}>{ans.aiFeedback}</p>
                                 
                                 {ans.matchedPoints && (() => {
@@ -764,7 +764,7 @@ export default function AdminDashboard() {
                             <h4 style={{ fontWeight: 700, color: '#E65100', marginBottom: '12px' }}>Admin Override</h4>
                             <div className="form-group">
                               <label className="form-label" style={{ color: '#E65100' }}>Override Score (leave empty to use AI score)</label>
-                              <input className="form-input" type="number" min={0} max={ans.question.marks} step={0.5} style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.score} onChange={e => setOverrideForm(f => ({ ...f, score: e.target.value }))} />
+                              <input className="form-input" type="number" min={0} max={ans.question?.marks || 100} step={0.5} style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.score} onChange={e => setOverrideForm(f => ({ ...f, score: e.target.value }))} />
                             </div>
                             <div className="form-group">
                               <label className="form-label" style={{ color: '#E65100' }}>Admin Notes (visible only to admins)</label>
