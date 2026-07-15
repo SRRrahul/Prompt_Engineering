@@ -7,6 +7,7 @@ interface FormState {
   name: string;
   email: string;
   department: string;
+  year: string;
   username: string;
   password: string;
   confirmPassword: string;
@@ -20,7 +21,7 @@ interface FieldErrors {
 
 export default function ExaminerRegister() {
   const navigate = useNavigate();
-  const [form, setForm] = useState<FormState>({ name: '', email: '', department: '', username: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState<FormState>({ name: '', email: '', department: '', year: '', username: '', password: '', confirmPassword: '' });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -67,6 +68,7 @@ export default function ExaminerRegister() {
         name: form.name.trim(),
         email: form.email.trim(),
         department: form.department.trim(),
+        year: form.year.trim(),
         username: form.username.trim(),
         password: form.password,
       });
@@ -169,6 +171,24 @@ export default function ExaminerRegister() {
                   value={form.department}
                   onChange={handleChange('department')}
                 />
+              </div>
+
+              {/* Year */}
+              <div className="form-group">
+                <label className="form-label">Year of Study *</label>
+                <select
+                  className="form-input"
+                  value={form.year}
+                  onChange={handleChange('year') as any}
+                  required
+                >
+                  <option value="" disabled>Select your year</option>
+                  <option value="1st Year">1st Year</option>
+                  <option value="2nd Year">2nd Year</option>
+                  <option value="3rd Year">3rd Year</option>
+                  <option value="4th Year">4th Year</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
 
               {/* Divider */}

@@ -9,7 +9,7 @@ const router = Router();
 // POST /api/auth/examiner/register
 router.post('/examiner/register', async (req: Request, res: Response) => {
   try {
-    const { name, email, department, username, password } = req.body;
+    const { name, email, department, year, username, password } = req.body;
 
     if (!name || !email || !username || !password) {
       return res.status(400).json({ message: 'Name, email, username, and password are all required.' });
@@ -47,6 +47,7 @@ router.post('/examiner/register', async (req: Request, res: Response) => {
       username: cleanUsername,
       passwordHash,
       department: department?.trim() || '',
+      year: year?.trim() || '',
       examStatus: 'not_started',
       registeredAt: now,
     });
