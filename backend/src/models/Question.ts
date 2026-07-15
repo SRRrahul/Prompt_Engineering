@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document, model } from 'mongoose';
 
 export interface IQuestion extends Document {
+  _id: string;
   text: string;
   modelAnswer: string;
   rubric: string;

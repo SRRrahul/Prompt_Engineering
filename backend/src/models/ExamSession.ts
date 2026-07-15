@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document, model } from 'mongoose';
 
 export interface IExamSession extends Document {
+  _id: string;
   examinerId: string;
   questionOrder: string; // JSON string of question IDs
   startTime?: string;
