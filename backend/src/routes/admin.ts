@@ -7,6 +7,7 @@ import Question from '../models/Question';
 import ExamSession from '../models/ExamSession';
 import Answer from '../models/Answer';
 import Settings from '../models/Settings';
+import { evaluateAnswer } from '../services/geminiEvaluator';
 
 const router = Router();
 router.use(authenticateToken, requireRole('admin'));
@@ -90,6 +91,41 @@ router.delete('/questions/:id', async (req: AuthRequest, res: Response) => {
   } catch (err) { return res.status(404).json({ message: 'Question not found' }); }
 });
 
+// POST /api/admin/evaluate/:sessionId
+router.post('/evaluate/:sessionId', async (req: AuthRequest, res: Response) => {
+  try {
+    const session = await ExamSession.findById(req.params.sessionId);
+    if (!session) return res.status(404).json({ message: 'Session not found' });
+
+    const answers = await Answer.find({ sessionId: String(session._id) });
+    let qOrder: string[] = [];
+    try { qOrder = JSON.parse(session.questionOrder); } catch (e) { }
+    const questions = await Question.find({ _id: { $in: qOrder } });
+
+    // Evaluate synchronously or start async job
+    let evaluatedCount = 0;
+    for (const answer of answers) {
+      if (!answer.answerText.trim()) continue;
+      const question = questions.find((q: any) => String(q._id) === answer.questionId);
+      if (!question) continue;
+      
+      const result = await evaluateAnswer(answer.answerText, question.text, question.modelAnswer, question.rubric, question.marks);
+      const finalScore = result.accuracyPercentage != null ? (result.accuracyPercentage / 100) * question.marks : result.score;
+      
+      await Answer.findByIdAndUpdate(answer._id, {
+        aiScore: finalScore,
+        aiFeedback: result.feedback,
+        isGraded: true,
+      });
+      evaluatedCount++;
+    }
+
+    return res.json({ message: `Successfully evaluated ${evaluatedCount} answers.`, evaluatedCount });
+  } catch (error: any) {
+    return res.status(500).json({ message: 'Evaluation failed', error: error.message });
+  }
+});
+
 // GET /api/admin/results
 router.get('/results', async (_req: AuthRequest, res: Response) => {
   const examiners = await User.find({ role: 'examiner' });
@@ -107,7 +143,7 @@ router.get('/results', async (_req: AuthRequest, res: Response) => {
     }
     return {
       examiner: { id: examiner._id, name: examiner.name, email: examiner.email, username: examiner.username, department: examiner.department },
-      session: session ? { status: session.status, startTime: session.startTime, endTime: session.endTime, durationMinutes: session.durationMinutes, violationCount: session.violationCount } : null,
+      session: session ? { id: session._id, status: session.status, startTime: session.startTime, endTime: session.endTime, durationMinutes: session.durationMinutes, violationCount: session.violationCount } : null,
       totalScore, maxScore,
       percentage: maxScore > 0 ? parseFloat(((totalScore / maxScore) * 100).toFixed(1)) : 0,
       answeredCount: answers.filter((a: any) => a.answerText.trim()).length,

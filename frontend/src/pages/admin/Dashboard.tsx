@@ -138,6 +138,19 @@ export default function AdminDashboard() {
     setLoad('settings', false);
   };
 
+  /* ─── Evaluate Session ─── */
+  const handleEvaluateSession = async (sessionId: string) => {
+    setLoad(`eval-${sessionId}`, true);
+    try {
+      const res = await adminApi.post(`/admin/evaluate/${sessionId}`);
+      showSuccess(res.data.message || 'Evaluation successful.');
+      fetchResults();
+    } catch (err: any) {
+      showError(err.response?.data?.message || 'Failed to evaluate session.');
+    }
+    setLoad(`eval-${sessionId}`, false);
+  };
+
   /* ══════════════ RENDER ══════════════ */
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-base)' }}>
@@ -520,6 +533,7 @@ export default function AdminDashboard() {
                           <th>Status</th>
                           <th>Violations</th>
                           <th>Submitted</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -570,6 +584,17 @@ export default function AdminDashboard() {
                                 </td>
                                 <td style={{ fontSize: '0.8rem', color: 'var(--text-light)', whiteSpace: 'nowrap' }}>
                                   {fmtDate(r.session?.endTime)}
+                                </td>
+                                <td>
+                                  {completed && r.session?.id && (
+                                    <button 
+                                      className="btn btn-outline btn-sm" 
+                                      onClick={() => handleEvaluateSession(r.session.id)}
+                                      disabled={loading[`eval-${r.session.id}`]}
+                                    >
+                                      {loading[`eval-${r.session.id}`] ? 'Evaluating...' : '🤖 Evaluate with AI'}
+                                    </button>
+                                  )}
                                 </td>
                               </tr>
                             );

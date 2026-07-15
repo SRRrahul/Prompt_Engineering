@@ -281,7 +281,7 @@ export default function ExamInterface() {
   const currentQuestion = questions[currentIdx];
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg-base)', userSelect: 'none' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-base)' }}>
       {/* Violation Alert Overlay */}
       {showViolationAlert && (
         <div className="violation-overlay" style={{ zIndex: 3000 }}>

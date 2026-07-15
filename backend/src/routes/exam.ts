@@ -166,7 +166,7 @@ router.post('/submit', async (req: AuthRequest, res: Response) => {
     try { qOrder = JSON.parse(session.questionOrder); } catch (e) { }
     const questions = await Question.find({ _id: { $in: qOrder } });
 
-    gradeAllAnswers(answers, questions).catch(console.error);
+    // AI Evaluation is now triggered manually by admins.
 
     return res.json({
       message: 'Exam submitted. Your answers are being evaluated.',
