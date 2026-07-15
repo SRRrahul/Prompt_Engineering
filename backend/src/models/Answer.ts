@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document, model } from 'mongoose';
 
-export interface IAnswer extends Document {
+export interface IAnswer {
   _id: string;
   sessionId: string;
   questionId: string;
