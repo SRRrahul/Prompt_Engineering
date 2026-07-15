@@ -10,11 +10,11 @@ interface Stats { totalExaminers: number; totalQuestions: number; completedExams
 interface Question { _id: string; text: string; modelAnswer: string; rubric: string; marks: number; createdAt: string; }
 interface Examiner {
   id: string; name: string; email: string; username: string; plainPassword?: string;
-  department?: string; registeredAt: string; examStatus: string;
+  department?: string; year?: string; registeredAt: string; examStatus: string;
   session?: { status: string; startTime?: string; endTime?: string; violationCount: number; } | null;
 }
 interface ResultEntry {
-  examiner: { id: string; name: string; email: string; username: string; department?: string; };
+  examiner: { id: string; name: string; email: string; username: string; department?: string; year?: string; };
   session: { status: string; startTime?: string; endTime?: string; violationCount: number; durationMinutes: number; } | null;
   totalScore: number; maxScore: number; percentage: number;
   answeredCount: number; gradedCount: number; totalQuestions: number; rank?: number;
@@ -397,7 +397,7 @@ export default function AdminDashboard() {
                           <th>Name</th>
                           <th>Username</th>
                           <th>Password</th>
-                          <th>Department</th>
+                          <th>Dept / Year</th>
                           <th>Registered</th>
                           <th>Exam Status</th>
                           <th>Violations</th>
@@ -427,7 +427,10 @@ export default function AdminDashboard() {
                                 </div>
                               ) : <span style={{ color: 'var(--text-light)', fontSize: '0.82rem' }}>—</span>}
                             </td>
-                            <td style={{ fontSize: '0.85rem' }}>{ex.department || '—'}</td>
+                            <td style={{ fontSize: '0.85rem' }}>
+                              {ex.department || '—'}<br/>
+                              <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>{ex.year || ''}</span>
+                            </td>
                             <td style={{ fontSize: '0.8rem', color: 'var(--text-light)', whiteSpace: 'nowrap' }}>{fmtDate(ex.registeredAt)}</td>
                             <td>{statusBadge(ex.session?.status || ex.examStatus || 'not_started')}</td>
                             <td>
@@ -535,7 +538,10 @@ export default function AdminDashboard() {
                                 </td>
                                 <td>
                                   <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{r.examiner.name}</div>
-                                  <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{r.examiner.department || r.examiner.email}</div>
+                                  <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>
+                                    {r.examiner.department || r.examiner.email} 
+                                    {r.examiner.year && ` • ${r.examiner.year}`}
+                                  </div>
                                 </td>
                                 <td><code style={{ fontSize: '0.82rem' }}>{r.examiner.username}</code></td>
                                 <td>
