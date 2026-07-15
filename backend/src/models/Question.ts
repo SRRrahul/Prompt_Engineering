@@ -9,7 +9,10 @@ export interface IQuestion extends Document {
   createdAt: string;
 }
 
+import { uid } from '../config/db';
+
 const QuestionSchema = new Schema<IQuestion>({
+  _id: { type: String, default: uid },
   text: { type: String, required: true },
   modelAnswer: { type: String, required: true },
   rubric: { type: String, required: true },

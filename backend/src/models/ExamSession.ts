@@ -11,7 +11,10 @@ export interface IExamSession extends Document {
   durationMinutes: number;
 }
 
+import { uid } from '../config/db';
+
 const ExamSessionSchema = new Schema<IExamSession>({
+  _id: { type: String, default: uid },
   examinerId: { type: String, required: true },
   questionOrder: { type: String, default: '[]' },
   startTime: { type: String },

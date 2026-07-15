@@ -18,7 +18,10 @@ export interface IAnswer extends Document {
   adminNotes?: string | null;
 }
 
+import { uid } from '../config/db';
+
 const AnswerSchema = new Schema<IAnswer>({
+  _id: { type: String, default: uid },
   sessionId: { type: String, required: true },
   questionId: { type: String, required: true },
   examinerId: { type: String, required: true },

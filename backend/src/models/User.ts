@@ -11,7 +11,10 @@ export interface IUser extends Document {
   registeredAt: string;
 }
 
+import { uid } from '../config/db';
+
 const UserSchema = new Schema<IUser>({
+  _id: { type: String, default: uid },
   role: { type: String, required: true, enum: ['examiner', 'admin'] },
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true, lowercase: true },
