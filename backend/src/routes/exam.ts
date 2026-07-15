@@ -78,10 +78,11 @@ router.post('/start', async (req: AuthRequest, res: Response) => {
 
     const questions = await Question.find({ _id: { $in: selected } });
     const ordered = selected.map((id: string) => questions.find((q: any) => String(q._id) === id)).filter(Boolean);
+    const mappedQs = ordered.map((q: any) => ({ id: q._id, text: q.text, rubric: q.rubric, marks: q.marks }));
 
     return res.status(201).json({
       session: { id: sessionId, startTime: now, durationMinutes: settings.timerDurationMinutes, remainingMs: settings.timerDurationMinutes * 60 * 1000, status: 'in_progress', violationCount: 0 },
-      questions: ordered,
+      questions: mappedQs,
     });
   } catch (error: any) {
     console.error('Exam start error:', error);
