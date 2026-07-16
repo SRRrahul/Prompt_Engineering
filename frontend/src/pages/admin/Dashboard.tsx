@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { adminApi } from '../../api/client';
 import { useAdminAuth } from '../../context/AdminAuthContext';
@@ -645,7 +645,7 @@ export default function AdminDashboard() {
                         </thead>
                         <tbody>
                           {answersData.answers.map(ans => (
-                            <React.Fragment key={ans.id}>
+                            <Fragment key={ans.id}>
                               <tr>
                                 <td>
                                   <div style={{ fontWeight: 600 }}>{ans.session?.user?.name || 'Unknown Student'}</div>
@@ -758,7 +758,7 @@ export default function AdminDashboard() {
                                   </td>
                                 </tr>
                               )}
-                            </React.Fragment>
+                            </Fragment>
                           ))}
                         </tbody>
                       </table>
