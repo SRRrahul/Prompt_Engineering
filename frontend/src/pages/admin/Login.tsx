@@ -117,9 +117,7 @@ export default function AdminLogin() {
           </div>
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)' }}>
-          Default: admin@gtec.edu / Admin@GTEC2024
-        </p>
+
       </div>
     </div>
   );
