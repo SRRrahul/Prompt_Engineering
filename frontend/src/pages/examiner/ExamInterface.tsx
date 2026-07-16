@@ -50,6 +50,9 @@ export default function ExamInterface() {
         // Fetch questions via start (resumes existing session)
         const startRes = await examinerApi.post('/exam/start');
         setQuestions(startRes.data.questions as Question[]);
+        if (startRes.data.answers) {
+          setAnswers(startRes.data.answers);
+        }
       } catch (err: any) {
         setError(err.response?.data?.message || 'Failed to load exam. Please refresh.');
       } finally {
@@ -174,11 +177,6 @@ export default function ExamInterface() {
     if (!qId) return;
     
     const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
-    if (wordCount > 250) {
-      // Prevent typing more than 250 words, unless they are deleting
-      const currentWordCount = (answers[qId] || '').trim().split(/\s+/).filter(Boolean).length;
-      if (wordCount > currentWordCount) return;
-    }
 
     setAnswers(prev => ({ ...prev, [qId]: text }));
     setSavedAnswers(prev => ({ ...prev, [qId]: false }));
@@ -240,8 +238,8 @@ export default function ExamInterface() {
   // ── Word count ───────────────────────────────────────────────
   const currentAnswer = answers[questions[currentIdx]?.id] || '';
   const wordCount = currentAnswer.trim().split(/\s+/).filter(Boolean).length;
-  const wordProgress = Math.min((wordCount / 250) * 100, 100);
-  const isLimitReached = wordCount >= 250;
+  const wordProgress = Math.min((wordCount / settings.minWordCount) * 100, 100);
+  const isMinReached = wordCount >= settings.minWordCount;
 
   const answeredCount = questions.filter(q => {
     const text = answers[q.id] || '';
@@ -435,8 +433,8 @@ export default function ExamInterface() {
                   </span>
                   <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
                     <span className="badge badge-brown">📊 {currentQuestion.marks} marks</span>
-                    <span className={`badge ${isLimitReached ? 'badge-warning' : 'badge-mint'}`}>
-                      {wordCount} / 250 words
+                    <span className={`badge ${isMinReached ? 'badge-mint' : 'badge-warning'}`}>
+                      {wordCount} / {settings.minWordCount} words
                     </span>
                   </div>
                 </div>
@@ -499,7 +497,7 @@ export default function ExamInterface() {
                     fontSize: '0.95rem',
                     lineHeight: '1.75',
                     resize: 'vertical',
-                    borderColor: isLimitReached ? 'var(--warning)' : undefined,
+                    borderColor: isMinReached ? 'var(--mint)' : 'var(--warning)',
                   }}
                   onCopy={e => e.preventDefault()}
                   onCut={e => e.preventDefault()}
@@ -514,12 +512,12 @@ export default function ExamInterface() {
                     className={`progress-fill`}
                     style={{
                       width: `${wordProgress}%`,
-                      background: isLimitReached ? 'var(--warning)' : 'var(--secondary)',
+                      background: isMinReached ? 'var(--secondary)' : 'var(--warning)',
                     }}
                   />
                 </div>
-                <span className={`word-count-text ${isLimitReached ? 'limit-reached' : ''}`} style={{ color: isLimitReached ? '#F57C00' : 'var(--text-mid)', fontWeight: 600 }}>
-                  {wordCount} / 250 words limit
+                <span className="word-count-text" style={{ color: isMinReached ? 'var(--secondary-dark)' : '#F57C00', fontWeight: 600 }}>
+                  {wordCount} / {settings.minWordCount} words minimum
                 </span>
               </div>
 

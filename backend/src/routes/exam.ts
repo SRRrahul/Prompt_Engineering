@@ -39,11 +39,17 @@ router.post('/start', async (req: AuthRequest, res: Response) => {
       try { qOrder = JSON.parse(session.questionOrder); } catch (e) { }
       const allQuestions = await Question.find({ _id: { $in: qOrder } });
       const ordered = qOrder.map((id: string) => allQuestions.find((q: any) => String(q._id) === id)).filter(Boolean);
+      const mappedQs = ordered.map((q: any) => ({ id: q._id, text: q.text, rubric: q.rubric, marks: q.marks }));
       const elapsed = Date.now() - new Date(session.startTime!).getTime();
       const remainingMs = Math.max(0, (session.durationMinutes * 60 * 1000) - elapsed);
+      
+      const answers = await Answer.find({ sessionId: String(session._id) });
+      const answersMap = answers.reduce((acc: any, a: any) => { acc[a.questionId] = a.answerText; return acc; }, {});
+
       return res.json({
         session: { id: session._id, startTime: session.startTime, durationMinutes: session.durationMinutes, remainingMs, status: session.status, violationCount: session.violationCount },
-        questions: ordered,
+        questions: mappedQs,
+        answers: answersMap
       });
     }
 
