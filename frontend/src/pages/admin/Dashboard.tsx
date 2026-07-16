@@ -645,35 +645,120 @@ export default function AdminDashboard() {
                         </thead>
                         <tbody>
                           {answersData.answers.map(ans => (
-                            <tr key={ans.id}>
-                              <td>
-                                <div style={{ fontWeight: 600 }}>{ans.session?.user?.name || 'Unknown Student'}</div>
-                                <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{ans.session?.user?.department || ans.session?.user?.username || '—'}</div>
-                              </td>
-                              <td style={{ fontSize: '0.85rem' }}>{ans.question?.text?.slice(0, 50) || 'Deleted Question'}...</td>
-                              <td>{ans.wordCount}</td>
-                              <td>
-                                {ans.adminOverrideScore !== null && ans.adminOverrideScore !== undefined ? (
-                                  <span className="badge badge-warning">{ans.adminOverrideScore} / {ans.question?.marks || '?'} (Override)</span>
-                                ) : ans.accuracyPercentage != null ? (
-                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                    <span className="badge badge-mint">{ans.aiScore} / {ans.question?.marks || '?'}</span>
-                                    <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Acc: {ans.accuracyPercentage}%</span>
-                                  </div>
-                                ) : (
-                                  <span className="badge badge-gray">Pending</span>
-                                )}
-                              </td>
-                              <td style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>{fmtDate(ans.submittedAt || '')}</td>
-                              <td>
-                                <button className="btn btn-primary btn-sm" onClick={() => {
-                                  setExpandedAnswer(expandedAnswer === ans.id ? null : ans.id);
-                                  setOverrideForm({ score: ans.adminOverrideScore?.toString() || '', notes: ans.adminNotes || '' });
-                                }}>
-                                  {expandedAnswer === ans.id ? 'Close' : 'Review'}
-                                </button>
-                              </td>
-                            </tr>
+                            <React.Fragment key={ans.id}>
+                              <tr>
+                                <td>
+                                  <div style={{ fontWeight: 600 }}>{ans.session?.user?.name || 'Unknown Student'}</div>
+                                  <div style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{ans.session?.user?.department || ans.session?.user?.username || '—'}</div>
+                                </td>
+                                <td style={{ fontSize: '0.85rem' }}>{ans.question?.text?.slice(0, 50) || 'Deleted Question'}...</td>
+                                <td>{ans.wordCount}</td>
+                                <td>
+                                  {ans.adminOverrideScore !== null && ans.adminOverrideScore !== undefined ? (
+                                    <span className="badge badge-warning">{ans.adminOverrideScore} / {ans.question?.marks || '?'} (Override)</span>
+                                  ) : ans.accuracyPercentage != null ? (
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                      <span className="badge badge-mint">{ans.aiScore} / {ans.question?.marks || '?'}</span>
+                                      <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Acc: {ans.accuracyPercentage}%</span>
+                                    </div>
+                                  ) : (
+                                    <span className="badge badge-gray">Pending</span>
+                                  )}
+                                </td>
+                                <td style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>{fmtDate(ans.submittedAt || '')}</td>
+                                <td>
+                                  <button className="btn btn-primary btn-sm" onClick={() => {
+                                    setExpandedAnswer(expandedAnswer === ans.id ? null : ans.id);
+                                    setOverrideForm({ score: ans.adminOverrideScore?.toString() || '', notes: ans.adminNotes || '' });
+                                  }}>
+                                    {expandedAnswer === ans.id ? 'Close' : 'Review'}
+                                  </button>
+                                </td>
+                              </tr>
+                              {expandedAnswer === ans.id && (
+                                <tr>
+                                  <td colSpan={6} style={{ padding: 0, borderBottom: '2px solid var(--primary)' }}>
+                                    <div className="animate-fade-in" style={{ padding: '24px', background: 'var(--bg-base)' }}>
+                                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                        <div>
+                                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Question ({ans.question?.marks || 0} marks)</h4>
+                                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'white', padding: '12px', borderRadius: '4px', border: '1px solid var(--accent-light)' }}>{ans.question?.text || 'Question missing'}</p>
+                                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Model Answer</h4>
+                                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'white', padding: '12px', borderRadius: '4px', border: '1px solid var(--accent-light)' }}>{ans.question?.modelAnswer || 'Model answer missing'}</p>
+                                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Rubric</h4>
+                                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'white', padding: '12px', borderRadius: '4px', border: '1px solid var(--accent-light)' }}>{ans.question?.rubric || 'Rubric missing'}</p>
+                                        </div>
+                                        <div>
+                                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Student's Answer ({ans.wordCount} words)</h4>
+                                          <div style={{ fontSize: '0.95rem', marginBottom: '20px', background: 'white', padding: '16px', borderRadius: '4px', border: '1px solid var(--accent-light)', minHeight: '150px', whiteSpace: 'pre-wrap' }}>
+                                            {ans.answerText || <span style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>No answer provided</span>}
+                                          </div>
+                                          <div style={{ background: 'var(--accent-light)', padding: '16px', borderRadius: '4px', marginBottom: '20px' }}>
+                                            <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Gemini AI Evaluation</h4>
+                                            {ans.aiScore !== null ? (
+                                              <>
+                                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--secondary-dark)', marginBottom: '8px' }}>Score: {ans.aiScore} / {ans.question?.marks || '?'} {ans.accuracyPercentage != null && <span style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginLeft: '8px' }}>(Accuracy: {ans.accuracyPercentage}%)</span>}</div>
+                                                <p style={{ fontSize: '0.9rem', marginBottom: '16px' }}>{ans.aiFeedback}</p>
+                                                
+                                                {ans.matchedPoints && (() => {
+                                                  try {
+                                                    const parsed = JSON.parse(ans.matchedPoints);
+                                                    if (Array.isArray(parsed) && parsed.length > 0) {
+                                                      return (
+                                                        <div style={{ marginBottom: '12px' }}>
+                                                          <h5 style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--secondary-dark)' }}>✅ Matched Points:</h5>
+                                                          <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.85rem' }}>
+                                                            {parsed.map((p: string, i: number) => <li key={i} style={{ marginBottom: '4px' }}>• {p}</li>)}
+                                                          </ul>
+                                                        </div>
+                                                      );
+                                                    }
+                                                  } catch (e) {}
+                                                  return null;
+                                                })()}
+                                                
+                                                {ans.missingPoints && (() => {
+                                                  try {
+                                                    const parsed = JSON.parse(ans.missingPoints);
+                                                    if (Array.isArray(parsed) && parsed.length > 0) {
+                                                      return (
+                                                        <div style={{ marginBottom: '12px' }}>
+                                                          <h5 style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--error)' }}>❌ Missing/Weak Points:</h5>
+                                                          <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.85rem' }}>
+                                                            {parsed.map((p: string, i: number) => <li key={i} style={{ marginBottom: '4px' }}>• {p}</li>)}
+                                                          </ul>
+                                                        </div>
+                                                      );
+                                                    }
+                                                  } catch (e) {}
+                                                  return null;
+                                                })()}
+                                              </>
+                                            ) : (
+                                              <p style={{ fontStyle: 'italic' }}>Pending AI grading or grading failed.</p>
+                                            )}
+                                          </div>
+                                          <div style={{ background: '#FFF3E0', padding: '16px', borderRadius: '4px', border: '1px solid #FFE0B2' }}>
+                                            <h4 style={{ fontWeight: 700, color: '#E65100', marginBottom: '12px' }}>Admin Override</h4>
+                                            <div className="form-group">
+                                              <label className="form-label" style={{ color: '#E65100' }}>Override Score (leave empty to use AI score)</label>
+                                              <input className="form-input" type="number" min={0} max={ans.question?.marks || 100} step={0.5} style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.score} onChange={e => setOverrideForm(f => ({ ...f, score: e.target.value }))} />
+                                            </div>
+                                            <div className="form-group">
+                                              <label className="form-label" style={{ color: '#E65100' }}>Admin Notes (visible only to admins)</label>
+                                              <textarea className="form-textarea" style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.notes} onChange={e => setOverrideForm(f => ({ ...f, notes: e.target.value }))} />
+                                            </div>
+                                            <button className="btn btn-primary" style={{ background: '#E65100', borderColor: '#E65100' }} onClick={() => handleSaveOverride(ans.id)} disabled={loading['override']}>
+                                              {loading['override'] ? 'Saving...' : '💾 Save Override'}
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </React.Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -691,95 +776,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               
-              {/* Expanded Detail View */}
-              {expandedAnswer && (() => {
-                const ans = answersData.answers.find(a => a.id === expandedAnswer);
-                if (!ans) return null;
-                return (
-                  <div className="card animate-fade-in">
-                    <div className="card-header" style={{ background: 'var(--primary)' }}>
-                      <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>Reviewing Answer from {ans.session?.user?.name || 'Unknown'}</h3>
-                    </div>
-                    <div className="card-body">
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                        <div>
-                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Question ({ans.question?.marks || 0} marks)</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.text || 'Question missing'}</p>
-                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Model Answer</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.modelAnswer || 'Model answer missing'}</p>
-                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Rubric</h4>
-                          <p style={{ fontSize: '0.9rem', marginBottom: '16px', background: 'var(--bg-base)', padding: '12px', borderRadius: '4px' }}>{ans.question?.rubric || 'Rubric missing'}</p>
-                        </div>
-                        <div>
-                          <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Student\'s Answer ({ans.wordCount} words)</h4>
-                          <div style={{ fontSize: '0.95rem', marginBottom: '20px', background: 'white', padding: '16px', borderRadius: '4px', border: '1px solid var(--accent-light)', minHeight: '150px' }}>
-                            {ans.answerText || <span style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>No answer provided</span>}
-                          </div>
-                          <div style={{ background: 'var(--accent-light)', padding: '16px', borderRadius: '4px', marginBottom: '20px' }}>
-                            <h4 style={{ fontWeight: 700, color: 'var(--primary-dark)', marginBottom: '8px' }}>Gemini AI Evaluation</h4>
-                            {ans.aiScore !== null ? (
-                              <>
-                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--secondary-dark)', marginBottom: '8px' }}>Score: {ans.aiScore} / {ans.question?.marks || '?'} {ans.accuracyPercentage != null && <span style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginLeft: '8px' }}>(Accuracy: {ans.accuracyPercentage}%)</span>}</div>
-                                <p style={{ fontSize: '0.9rem', marginBottom: '16px' }}>{ans.aiFeedback}</p>
-                                
-                                {ans.matchedPoints && (() => {
-                                  try {
-                                    const parsed = JSON.parse(ans.matchedPoints);
-                                    if (Array.isArray(parsed) && parsed.length > 0) {
-                                      return (
-                                        <div style={{ marginBottom: '12px' }}>
-                                          <h5 style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--secondary-dark)' }}>✅ Matched Points:</h5>
-                                          <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.85rem' }}>
-                                            {parsed.map((p: string, i: number) => <li key={i} style={{ marginBottom: '4px' }}>• {p}</li>)}
-                                          </ul>
-                                        </div>
-                                      );
-                                    }
-                                  } catch (e) {}
-                                  return null;
-                                })()}
-                                
-                                {ans.missingPoints && (() => {
-                                  try {
-                                    const parsed = JSON.parse(ans.missingPoints);
-                                    if (Array.isArray(parsed) && parsed.length > 0) {
-                                      return (
-                                        <div style={{ marginBottom: '12px' }}>
-                                          <h5 style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--error)' }}>❌ Missing/Weak Points:</h5>
-                                          <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.85rem' }}>
-                                            {parsed.map((p: string, i: number) => <li key={i} style={{ marginBottom: '4px' }}>• {p}</li>)}
-                                          </ul>
-                                        </div>
-                                      );
-                                    }
-                                  } catch (e) {}
-                                  return null;
-                                })()}
-                              </>
-                            ) : (
-                              <p style={{ fontStyle: 'italic' }}>Pending AI grading or grading failed.</p>
-                            )}
-                          </div>
-                          <div style={{ background: '#FFF3E0', padding: '16px', borderRadius: '4px', border: '1px solid #FFE0B2' }}>
-                            <h4 style={{ fontWeight: 700, color: '#E65100', marginBottom: '12px' }}>Admin Override</h4>
-                            <div className="form-group">
-                              <label className="form-label" style={{ color: '#E65100' }}>Override Score (leave empty to use AI score)</label>
-                              <input className="form-input" type="number" min={0} max={ans.question?.marks || 100} step={0.5} style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.score} onChange={e => setOverrideForm(f => ({ ...f, score: e.target.value }))} />
-                            </div>
-                            <div className="form-group">
-                              <label className="form-label" style={{ color: '#E65100' }}>Admin Notes (visible only to admins)</label>
-                              <textarea className="form-textarea" style={{ background: 'white', borderColor: '#FFE0B2' }} value={overrideForm.notes} onChange={e => setOverrideForm(f => ({ ...f, notes: e.target.value }))} />
-                            </div>
-                            <button className="btn btn-primary" style={{ background: '#E65100', borderColor: '#E65100' }} onClick={() => handleSaveOverride(ans.id)} disabled={loading['override']}>
-                              {loading['override'] ? 'Saving...' : '💾 Save Override'}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })()}
+
             </div>
           )}
 

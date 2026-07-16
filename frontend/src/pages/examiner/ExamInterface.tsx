@@ -162,8 +162,8 @@ export default function ExamInterface() {
   };
 
   // ── Save answer ──────────────────────────────────────────────
-  const saveCurrentAnswer = useCallback(async (qId: string, text: string) => {
-    if (!qId || isSubmittingRef.current) return;
+  const saveCurrentAnswer = useCallback(async (qId: string, text: string, force = false) => {
+    if (!qId || (isSubmittingRef.current && !force)) return;
     setSavingAnswer(true);
     try {
       await examinerApi.post('/exam/answer', { questionId: qId, answerText: text });
@@ -202,7 +202,7 @@ export default function ExamInterface() {
 
     // Save all answers first
     const qId = questions[currentIdx]?.id;
-    if (qId && answers[qId]) await saveCurrentAnswer(qId, answers[qId]);
+    if (qId && answers[qId]) await saveCurrentAnswer(qId, answers[qId], true);
 
     try {
       await examinerApi.post('/exam/submit', { autoSubmit: auto });
