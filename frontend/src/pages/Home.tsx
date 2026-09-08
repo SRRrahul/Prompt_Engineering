@@ -1,23 +1,11 @@
 import { Link } from 'react-router-dom';
-import AtomLogo from '../components/AtomLogo';
+import Navbar from '../components/Navbar';
 
 export default function Home() {
   return (
     <div style={{ minHeight: '40vh', background: 'var(--bg-base)' }}>
       {/* ── Navbar ── */}
-      <nav className="navbar">
-        <div className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <AtomLogo size={56} />
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
-            <h1 className="brand-text-animated" style={{ fontSize: '2.1rem', lineHeight: 1, marginBottom: '2px' }}>COGNIFY</h1>
-            <div className="navbar-subtitle">Department of IT, AIDS & CSBS</div>
-          </div>
-        </div>
-        <ul className="navbar-nav">
-          <li><Link to="/examiner/login">Student Login</Link></li>
-          <li><Link to="/examiner/register">Register</Link></li>
-        </ul>
-      </nav>
+      <Navbar />
 
       {/* ── Hero Section ── */}
       <section style={{
@@ -43,26 +31,15 @@ export default function Home() {
 
           </div>
           <p className="animate-slide-up" style={{
-            fontSize: '2.3rem', letterSpacing: '0.05em', textTransform: 'uppercase',
-            color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
-            fontWeight: 500
-          }}>
-            Ganadipathy Tulsi's Jain Engineering College
-          </p>
-
-          <p className="animate-slide-up" style={{
             fontSize: '2rem', letterSpacing: '0.05em', textTransform: 'uppercase',
             color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
             fontWeight: 600
           }}>
             Department of IT, AIDS & CSBS
           </p>
-
-
-
           <div className="animate-slide-up" style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
             <img 
-              src="/logo.png" 
+              src="/triquetra.png" 
               alt="TRIQUETRA'26" 
               style={{ 
                 height: '240px', 

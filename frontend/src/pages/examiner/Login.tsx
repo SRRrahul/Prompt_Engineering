@@ -36,7 +36,7 @@ export default function ExaminerLogin() {
       <div style={{ maxWidth: '440px', width: '100%', animation: 'slideUp 0.4s ease both' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <img src="/logo.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
+            <img src="/triquetra.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
           </div>
           <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
             Department of IT, AIDS & CSBS

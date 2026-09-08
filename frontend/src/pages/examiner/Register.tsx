@@ -114,7 +114,7 @@ export default function ExaminerRegister() {
       <div style={{ maxWidth: '500px', width: '100%', animation: 'slideUp 0.4s ease both' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <img src="/logo.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
+            <img src="/triquetra.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
           </div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', color: 'var(--primary-dark)', marginBottom: '6px' }}>
             Student Registration
