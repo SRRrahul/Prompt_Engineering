@@ -23,7 +23,14 @@ export function ExaminerAuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('examiner_token'));
   const [user, setUser] = useState<ExaminerUser | null>(() => {
     const stored = localStorage.getItem('examiner_user');
-    return stored ? JSON.parse(stored) : null;
+    if (!stored) return null;
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.error('Failed to parse examiner_user from localStorage', e);
+      localStorage.removeItem('examiner_user');
+      return null;
+    }
   });
 
   const login = (newToken: string, newUser: ExaminerUser) => {

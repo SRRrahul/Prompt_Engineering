@@ -15,7 +15,14 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('admin_token'));
   const [user, setUser] = useState<AdminUser | null>(() => {
     const stored = localStorage.getItem('admin_user');
-    return stored ? JSON.parse(stored) : null;
+    if (!stored) return null;
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.error('Failed to parse admin_user from localStorage', e);
+      localStorage.removeItem('admin_user');
+      return null;
+    }
   });
 
   const login = (newToken: string, newUser: AdminUser) => {
