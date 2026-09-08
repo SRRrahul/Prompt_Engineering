@@ -4,25 +4,28 @@
 ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --primary-dark: #0F172A; /* Midnight */
-  --primary: #2563EB;      /* Royal Blue */
-  --primary-light: #3B82F6; 
-  --primary-pale: #EFF6FF;  
+  /* Core Brand (Deep Zinc / Slate) */
+  --primary-dark: #09090b; 
+  --primary: #18181b;      
+  --primary-light: #27272a; 
+  --primary-pale: #e4e4e7;  
   
-  --secondary-dark: #B45309; /* Deep Gold */
-  --secondary: #F59E0B;      /* Elegant Gold */
-  --secondary-light: #FCD34D;
-  --secondary-pale: #FEF3C7;  
+  /* Accent (Vibrant Sky Blue) */
+  --secondary-dark: #0369a1; 
+  --secondary: #0ea5e9;      
+  --secondary-light: #38bdf8;
+  --secondary-pale: #e0f2fe;  
   
-  --bg-base: #F8FAFC;      
-  --accent-light: #F1F5F9; 
-  --text-dark: #0F172A;    
-  --text-mid: #334155;     
-  --text-light: #64748B;   
+  /* Backgrounds & Text */
+  --bg-base: #fafafa;      
+  --accent-light: #f4f4f5; 
+  --text-dark: #09090b;    
+  --text-mid: #52525b;     
+  --text-light: #a1a1aa;   
   
-  --white: #FFFFFF;
-  --error: #E11D48;        
-  --error-light: #FFE4E6;  
+  --white: #ffffff;
+  --error: #ef4444;        
+  --error-light: #fee2e2;  
   
   --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
@@ -357,7 +360,7 @@ img {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 0.02em;
-  background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--secondary), var(--primary-dark));
+  background: linear-gradient(to right, var(--primary-dark), var(--secondary-dark), var(--secondary), var(--primary-dark));
   background-size: 300% auto;
   color: transparent;
   -webkit-background-clip: text;
