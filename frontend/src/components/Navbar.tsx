@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import GtecLogo from './GtecLogo';
+import AtomLogo from './AtomLogo';
 import { useExaminerAuth } from '../context/ExaminerAuthContext';
 
 interface Props { variant?: 'default' | 'admin'; adminName?: string; onAdminLogout?: () => void; }
@@ -15,11 +15,11 @@ export default function Navbar({ variant = 'default', adminName, onAdminLogout }
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-brand">
-        <GtecLogo size={72} />
-        <div>
-          <h1 className="brand-text-animated">COGNIFY</h1>
-          <div className="navbar-subtitle">Prompt Engineering Assessment</div>
+      <Link to="/" className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <AtomLogo size={48} />
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
+          <h1 className="brand-text-animated" style={{ fontSize: '1.8rem', lineHeight: 1, marginBottom: '2px' }}>COGNIFY</h1>
+          <div className="navbar-subtitle">Department of IT, AIDS & CSBS</div>
         </div>
       </Link>
 

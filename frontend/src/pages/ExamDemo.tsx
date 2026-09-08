@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import GtecLogo from '../components/GtecLogo';
+import AtomLogo from '../components/AtomLogo';
 
 const DEMO_STEPS = [
   {
@@ -51,7 +51,7 @@ const DEMO_STEPS = [
               <div key={f} style={{ marginBottom: '8px' }}>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '3px' }}>{f}</div>
                 <div style={{ background: 'white', border: '1px solid var(--primary-pale)', borderRadius: '6px', padding: '6px 10px', fontSize: '0.8rem', color: f === 'Password' ? 'transparent' : 'var(--text-mid)', textShadow: f === 'Password' ? '0 0 8px var(--text-mid)' : 'none' }}>
-                  {f === 'Full Name' ? 'Kamalesh D' : f === 'Email' ? 'kamal@gtec.edu' : f === 'Department' ? 'Information Technology' : f === 'Username' ? 'kamalesh2024' : '••••••••'}
+                  {f === 'Full Name' ? 'Kamalesh D' : f === 'Email' ? 'kamal@gtec.edu' : f === 'Department' ? 'IT, AIDS & CSBS' : f === 'Username' ? 'kamalesh2024' : '••••••••'}
                 </div>
               </div>
             ))}
@@ -206,10 +206,10 @@ export default function ExamDemo() {
     <div style={{ minHeight: '100vh', background: 'var(--bg-base)' }}>
       {/* Navbar */}
       <nav className="navbar">
-        <div className="navbar-brand">
-          <GtecLogo size={72} />
-          <div>
-            <h1>Information Technology</h1>
+        <div className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <AtomLogo size={48} />
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
+            <h1 className="brand-text-animated" style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '2px' }}>IT, AIDS & CSBS</h1>
             <div className="navbar-subtitle">Online Examination Portal</div>
           </div>
         </div>

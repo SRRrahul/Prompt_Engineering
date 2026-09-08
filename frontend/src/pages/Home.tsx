@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import GtecLogo from '../components/GtecLogo';
+import AtomLogo from '../components/AtomLogo';
 
 export default function Home() {
   return (
     <div style={{ minHeight: '40vh', background: 'var(--bg-base)' }}>
       {/* ── Navbar ── */}
       <nav className="navbar">
-        <div className="navbar-brand">
-          <GtecLogo size={88} />
-          <div>
-            <h1 className="brand-text-animated">COGNIFY</h1>
-            <div className="navbar-subtitle"></div>
+        <div className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <AtomLogo size={56} />
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
+            <h1 className="brand-text-animated" style={{ fontSize: '2.1rem', lineHeight: 1, marginBottom: '2px' }}>COGNIFY</h1>
+            <div className="navbar-subtitle">Department of IT, AIDS & CSBS</div>
           </div>
         </div>
         <ul className="navbar-nav">
@@ -55,7 +55,7 @@ export default function Home() {
             color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
             fontWeight: 600
           }}>
-            Department of Information Technology
+            Department of IT, AIDS & CSBS
           </p>
 
           <h1 className="animate-slide-up" style={{
@@ -259,10 +259,10 @@ export default function Home() {
       }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-            <GtecLogo size={80} light />
+            <AtomLogo size={64} className="opacity-80" />
           </div>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', color: 'var(--white)', marginBottom: '8px' }}>
-            Information technology department
+            Department of IT, AIDS & CSBS
           </p>
           <p style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', marginBottom: '20px' }}>
             Prompt Engineering — Online Assessment Portal

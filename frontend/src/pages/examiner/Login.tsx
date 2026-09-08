@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import GtecLogo from '../../components/GtecLogo';
+import AtomLogo from '../../components/AtomLogo';
 import { publicApi } from '../../api/client';
 import { useExaminerAuth } from '../../context/ExaminerAuthContext';
 
@@ -36,13 +36,13 @@ export default function ExaminerLogin() {
       <div style={{ maxWidth: '440px', width: '100%', animation: 'slideUp 0.4s ease both' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <GtecLogo size={96} />
+            <AtomLogo size={80} />
           </div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', color: 'var(--primary-dark)', marginBottom: '6px' }}>
             Prompt Engineering
           </h1>
           <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
-            Information Technology Department
+            Department of IT, AIDS & CSBS
           </p>
         </div>
 

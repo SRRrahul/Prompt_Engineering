@@ -4,25 +4,25 @@
 ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --primary-dark: #3730A3; /* Indigo 800 */
-  --primary: #4F46E5;      /* Indigo 600 */
-  --primary-light: #818CF8; /* Indigo 400 */
-  --primary-pale: #E0E7FF;  /* Indigo 100 */
+  --primary-dark: #0F172A; /* Midnight */
+  --primary: #2563EB;      /* Royal Blue */
+  --primary-light: #3B82F6; 
+  --primary-pale: #EFF6FF;  
   
-  --secondary-dark: #1E293B; /* Slate 800 */
-  --secondary: #475569;      /* Slate 600 */
-  --secondary-light: #94A3B8; /* Slate 400 */
-  --secondary-pale: #F1F5F9;  /* Slate 100 */
+  --secondary-dark: #B45309; /* Deep Gold */
+  --secondary: #F59E0B;      /* Elegant Gold */
+  --secondary-light: #FCD34D;
+  --secondary-pale: #FEF3C7;  
   
-  --bg-base: #F8FAFC;      /* Slate 50 */
-  --accent-light: #F1F5F9; /* Slate 100 */
-  --text-dark: #0F172A;    /* Slate 900 */
-  --text-mid: #475569;     /* Slate 600 */
-  --text-light: #94A3B8;   /* Slate 400 */
+  --bg-base: #F8FAFC;      
+  --accent-light: #F1F5F9; 
+  --text-dark: #0F172A;    
+  --text-mid: #334155;     
+  --text-light: #64748B;   
   
   --white: #FFFFFF;
-  --error: #EF4444;        /* Red 500 */
-  --error-light: #FEE2E2;  /* Red 100 */
+  --error: #E11D48;        
+  --error-light: #FFE4E6;  
   
   --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
@@ -58,7 +58,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: 'Syne', system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -353,17 +353,18 @@ img {
 }
 
 .brand-text-animated {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.7rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
   font-weight: 800;
-  letter-spacing: -0.01em;
-  background: linear-gradient(to right, var(--primary), #38BDF8, var(--primary-dark), #818CF8);
+  letter-spacing: 0.02em;
+  background: linear-gradient(to right, var(--primary-dark), var(--primary), var(--secondary), var(--primary-dark));
   background-size: 300% auto;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
   animation: shimmer-text 5s linear infinite;
   margin: 0;
+  line-height: 1.1;
 }
 
 @keyframes shimmer-text {
@@ -791,6 +792,50 @@ tr:hover td {
 .violation-icon {
   font-size: 3.5rem;
   margin-bottom: 16px;
+}
+
+/* ── Atom Logo Animations ────────────────────────────────────── */
+.atom-logo-container {
+  perspective: 1000px;
+}
+.orbit-path {
+  transform-origin: 50px 50px;
+}
+.orbit-1 { animation: spin-3d-1 12s linear infinite; }
+.orbit-2 { animation: spin-3d-2 12s linear infinite; }
+.orbit-3 { animation: spin-3d-3 12s linear infinite; }
+
+.electron {
+  transform-origin: 50px 50px;
+}
+.e1 { animation: orbit-e1 4s linear infinite; }
+.e2 { animation: orbit-e2 4s linear infinite; animation-delay: -1.3s; }
+.e3 { animation: orbit-e3 4s linear infinite; animation-delay: -2.6s; }
+
+@keyframes spin-3d-1 {
+  0% { transform: rotate3d(1, 0.5, 0.2, 0deg); }
+  100% { transform: rotate3d(1, 0.5, 0.2, 360deg); }
+}
+@keyframes spin-3d-2 {
+  0% { transform: rotate3d(-0.5, 1, 0.8, 0deg); }
+  100% { transform: rotate3d(-0.5, 1, 0.8, 360deg); }
+}
+@keyframes spin-3d-3 {
+  0% { transform: rotate3d(0.2, -0.8, 1, 0deg); }
+  100% { transform: rotate3d(0.2, -0.8, 1, 360deg); }
+}
+
+@keyframes orbit-e1 {
+  0% { transform: rotate(30deg) translateX(42px) rotate(-30deg); }
+  100% { transform: rotate(390deg) translateX(42px) rotate(-390deg); }
+}
+@keyframes orbit-e2 {
+  0% { transform: rotate(90deg) translateX(42px) rotate(-90deg); }
+  100% { transform: rotate(450deg) translateX(42px) rotate(-450deg); }
+}
+@keyframes orbit-e3 {
+  0% { transform: rotate(150deg) translateX(42px) rotate(-150deg); }
+  100% { transform: rotate(510deg) translateX(42px) rotate(-510deg); }
 }
 
 /* ── Credential Display Box ──────────────────────────────────── */
