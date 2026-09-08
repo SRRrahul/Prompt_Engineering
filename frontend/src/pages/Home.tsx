@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* ── Hero Section ── */}
       <section style={{
-        background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #7B5E56 100%)',
+        background: 'linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%)',
         color: 'white',
         padding: '80px 24px 100px',
         textAlign: 'center',
@@ -31,11 +31,11 @@ export default function Home() {
         {/* Background circles */}
         <div style={{
           position: 'absolute', top: '-60px', right: '-60px', width: '300px', height: '300px',
-          borderRadius: '50%', background: 'rgba(152,216,200,0.08)', pointerEvents: 'none'
+          borderRadius: '50%', background: 'rgba(255,255,255,0.05)', pointerEvents: 'none'
         }} />
         <div style={{
           position: 'absolute', bottom: '-80px', left: '-40px', width: '250px', height: '250px',
-          borderRadius: '50%', background: 'rgba(152,216,200,0.06)', pointerEvents: 'none'
+          borderRadius: '50%', background: 'rgba(255,255,255,0.03)', pointerEvents: 'none'
         }} />
 
         <div className="container" style={{ position: 'relative' }}>
@@ -43,16 +43,16 @@ export default function Home() {
 
           </div>
           <p className="animate-slide-up" style={{
-            fontSize: '2.3rem', letterSpacing: '0.10em', textTransform: 'uppercase',
-            color: 'var(--secondary-light)', marginBottom: '16px', animationDelay: '1s',
+            fontSize: '2.3rem', letterSpacing: '0.05em', textTransform: 'uppercase',
+            color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
             fontWeight: 500
           }}>
             Ganadipathy Tulsi's Jain Engineering College
           </p>
 
           <p className="animate-slide-up" style={{
-            fontSize: '2rem', letterSpacing: '0.10em', textTransform: 'uppercase',
-            color: 'var(--secondary-light)', marginBottom: '16px', animationDelay: '1s',
+            fontSize: '2rem', letterSpacing: '0.05em', textTransform: 'uppercase',
+            color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
             fontWeight: 600
           }}>
             Department of Information Technology
