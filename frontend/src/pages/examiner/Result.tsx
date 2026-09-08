@@ -18,7 +18,7 @@ export default function ExaminerResult() {
                 <GtecLogo size={88} />
               </div>
               <h1 style={{ color: 'white', fontSize: '1.6rem', marginBottom: '4px' }}>Examination Completed</h1>
-              <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>Prompt Engineering Online Assessment — GTEC</p>
+              <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 Online Assessment — GTEC</p>
             </div>
 
             <div className="card-body" style={{ textAlign: 'center', padding: '50px 24px' }}>

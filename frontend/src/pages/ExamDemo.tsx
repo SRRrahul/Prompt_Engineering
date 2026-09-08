@@ -18,7 +18,7 @@ const DEMO_STEPS = [
           </div>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
-              '5 questions drawn from the Prompt Engineering question bank',
+              '5 questions drawn from the TRIQUETRA\'26 question bank',
               'Total duration: 60 minutes from the moment you click "Start Exam"',
               'Each question carries a maximum of 10 marks (Total: 50 marks)',
               'Questions are uniquely shuffled — no two candidates receive the same order',
@@ -126,7 +126,7 @@ const DEMO_STEPS = [
         <div style={{ background: 'var(--accent-light)', border: '1px solid var(--primary-pale)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
           {/* Top bar */}
           <div style={{ background: 'var(--primary-dark)', padding: '10px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ color: 'var(--secondary-light)', fontSize: '0.8rem', fontWeight: 700 }}>Prompt Engineering — Question 2 of 5</div>
+            <div style={{ color: 'var(--secondary-light)', fontSize: '0.8rem', fontWeight: 700 }}>TRIQUETRA'26 — Question 2 of 5</div>
             <div style={{ background: 'var(--primary)', border: '2px solid var(--secondary)', borderRadius: '8px', padding: '6px 14px', color: 'var(--secondary-light)', fontSize: '0.9rem', fontWeight: 800, fontFamily: 'monospace' }}>
               ⏱ 47:23
             </div>
@@ -242,7 +242,7 @@ export default function ExamDemo() {
               How the Exam Works
             </h1>
             <p style={{ color: 'var(--text-light)', fontSize: '0.95rem' }}>
-              A guided walkthrough of the Prompt Engineering Online Assessment
+              A guided walkthrough of the TRIQUETRA'26 Online Assessment
             </p>
           </div>
 

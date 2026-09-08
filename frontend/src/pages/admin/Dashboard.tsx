@@ -167,7 +167,7 @@ export default function AdminDashboard() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
             <div>
               <h1 style={{ fontSize: '1.8rem', color: 'var(--primary-dark)', marginBottom: '4px' }}>Admin Dashboard</h1>
-              <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Prompt Engineering - Examination Management</p>
+              <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 - Examination Management</p>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <GtecLogo size={68} />

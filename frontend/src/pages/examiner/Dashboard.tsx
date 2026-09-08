@@ -49,7 +49,7 @@ export default function ExaminerDashboard() {
               Welcome, {user?.name}
             </h1>
             <p style={{ color: 'var(--text-light)' }}>
-              You are registered for the Prompt Engineering Online Assessment.
+              You are registered for the TRIQUETRA'26 Online Assessment.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function ExaminerDashboard() {
           <div className="card animate-slide-up" style={{ marginBottom: '24px', animationDelay: '0.1s' }}>
             <div className="card-header">
               <h2 style={{ fontSize: '1.2rem', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
-                Prompt Engineering — Online Exam
+                TRIQUETRA'26 — Online Exam
               </h2>
             </div>
             <div className="card-body">
@@ -145,7 +145,7 @@ export default function ExaminerDashboard() {
             </div>
             <div className="modal-body">
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-mid)', marginBottom: '16px' }}>
-                You are about to begin the <strong>Prompt Engineering Online Assessment</strong>.
+                You are about to begin the <strong>TRIQUETRA'26 Online Assessment</strong>.
               </p>
               <div className="alert alert-warning">
                 <strong>Please read carefully:</strong>

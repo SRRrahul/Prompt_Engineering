@@ -114,20 +114,20 @@ export default function ExaminerRegister() {
       <div style={{ maxWidth: '500px', width: '100%', animation: 'slideUp 0.4s ease both' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <GtecLogo size={96} />
+            <img src="/logo.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
           </div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', color: 'var(--primary-dark)', marginBottom: '6px' }}>
             Student Registration
           </h1>
           <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
-            Ghana Technology and Engineering College
+            Department of IT, AIDS & CSBS
           </p>
         </div>
 
         <div className="card">
           <div className="card-header">
             <h3 style={{ fontSize: '1rem', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
-              Register for Prompt Engineering competition
+              Register for TRIQUETRA'26 competition
             </h3>
           </div>
           <div className="card-body">

@@ -58,43 +58,21 @@ export default function Home() {
             Department of IT, AIDS & CSBS
           </p>
 
-          <h1 className="animate-slide-up" style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(2rem, 5vw, 3.2rem)',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            marginBottom: '12px',
-            animationDelay: '0.15s',
-            lineHeight: 1.2,
-          }}>
-            Prompt Engineering
-          </h1>
 
-          <div className="animate-slide-up" style={{ animationDelay: '0.2s', position: 'relative', display: 'inline-block', marginBottom: '28px' }}>
-            <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
-              color: 'var(--secondary-light)',
-              fontWeight: 400,
-              fontStyle: 'italic',
-            }}>
 
-            </h2>
-            {/* Mint underline animation */}
-            <div style={{
-              height: '3px', background: 'var(--secondary)',
-              borderRadius: '2px', marginTop: '6px',
-              animation: 'mintUnderline 0.8s 0.6s ease both',
-              transformOrigin: 'left',
-            }} />
+          <div className="animate-slide-up" style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
+            <img 
+              src="/logo.png" 
+              alt="TRIQUETRA'26" 
+              style={{ 
+                height: '240px', 
+                objectFit: 'contain', 
+                filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.4))' 
+              }} 
+            />
           </div>
-
-          <p className="animate-fade-in" style={{
-            color: 'rgba(255,255,255,0.75)', maxWidth: '580px', margin: '0 auto 48px',
-            fontSize: '1.05rem', lineHeight: 1.7, animationDelay: '0.3s',
-          }}>
-            A secure , verified online examination for enrolled students of the Prompt Engineering.
-            Credentials are issued automatically upon registration.
+          <p className="animate-slide-up" style={{ color: 'var(--text-light)', fontSize: '1.1rem', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>
+            A secure, verified online examination for enrolled students of TRIQUETRA'26. Credentials are issued automatically upon registration.
           </p>
 
           <div className="animate-slide-up flex justify-center gap-4" style={{ animationDelay: '0.4s', flexWrap: 'wrap' }}>
@@ -158,7 +136,7 @@ export default function Home() {
               <div className="card-body">
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
-                    'The examination consists of 5 questions drawn from the Prompt Engineering question bank.',
+                    'The examination consists of 5 questions drawn from the TRIQUETRA\'26 question bank.',
                     'Total duration: 60 minutes from the moment you click "Start Exam".',
                     'Each question carries a maximum of 10 marks (Total: 50 marks).',
                     'Questions are uniquely shuffled per examiner — no two candidates receive the same order.',
@@ -265,7 +243,7 @@ export default function Home() {
             Department of IT, AIDS & CSBS
           </p>
           <p style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', marginBottom: '20px' }}>
-            Prompt Engineering — Online Assessment Portal
+            TRIQUETRA'26 — Online Assessment Portal
           </p>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px' }}>
             <Link to="/admin/login" style={{

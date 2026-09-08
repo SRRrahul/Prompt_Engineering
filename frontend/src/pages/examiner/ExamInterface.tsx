@@ -313,7 +313,7 @@ export default function ExamInterface() {
           <GtecLogo size={64} />
           <div>
             <div style={{ color: 'var(--white)', fontWeight: 700, fontSize: '0.95rem', fontFamily: "'Playfair Display', serif" }}>
-              Prompt Engineering Assessment
+              TRIQUETRA'26 Assessment
             </div>
             <div style={{ color: 'var(--secondary-light)', fontSize: '0.72rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
               {user?.name} • {user?.username}
@@ -574,7 +574,7 @@ function InlineResult({ answeredCount, totalQuestions, violationCount, onDashboa
               <GtecLogo size={88} />
             </div>
             <h1 style={{ color: 'white', fontSize: '1.6rem', marginBottom: '4px' }}>Examination Submitted</h1>
-            <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>Prompt Engineering Online Assessment — GTEC</p>
+            <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 Online Assessment — GTEC</p>
           </div>
 
           <div className="card-body" style={{ textAlign: 'center', padding: '40px 24px' }}>
