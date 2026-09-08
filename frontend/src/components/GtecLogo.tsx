@@ -6,7 +6,6 @@ export default function GtecLogo({ size = 44, light = false }: Props) {
     <img
       src="/logo.png"
       alt="GTEC Logo"
-      width={width}
       height={size}
       onError={(e) => {
         // Fallback: hide broken-image icon but keep space reserved so layout is stable
@@ -15,8 +14,8 @@ export default function GtecLogo({ size = 44, light = false }: Props) {
       style={{
         objectFit: 'contain',
         display: 'block',
-        minWidth: width,
-        minHeight: size,
+        width: 'auto',
+        height: size,
         filter: light
           ? 'drop-shadow(0px 2px 6px rgba(0,0,0,0.6)) brightness(1.05)'
           : 'none',

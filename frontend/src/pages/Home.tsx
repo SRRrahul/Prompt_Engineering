@@ -9,7 +9,7 @@ export default function Home() {
         <div className="navbar-brand">
           <GtecLogo size={88} />
           <div>
-            <h1>COGNIFY</h1>
+            <h1 className="brand-text-animated">COGNIFY</h1>
             <div className="navbar-subtitle"></div>
           </div>
         </div>

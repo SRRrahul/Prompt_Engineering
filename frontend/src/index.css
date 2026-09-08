@@ -348,16 +348,28 @@ img {
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   text-decoration: none;
 }
 
-.navbar-brand h1 {
+.brand-text-animated {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  color: var(--primary);
+  font-size: 1.7rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  background: linear-gradient(to right, var(--primary), #38BDF8, var(--primary-dark), #818CF8);
+  background-size: 300% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer-text 5s linear infinite;
+  margin: 0;
+}
+
+@keyframes shimmer-text {
+  to {
+    background-position: 300% center;
+  }
 }
 
 .navbar-subtitle {

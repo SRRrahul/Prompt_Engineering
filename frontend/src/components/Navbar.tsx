@@ -18,7 +18,7 @@ export default function Navbar({ variant = 'default', adminName, onAdminLogout }
       <Link to="/" className="navbar-brand">
         <GtecLogo size={72} />
         <div>
-          <h1>GTEC</h1>
+          <h1 className="brand-text-animated">COGNIFY</h1>
           <div className="navbar-subtitle">Prompt Engineering Assessment</div>
         </div>
       </Link>
