@@ -31,37 +31,62 @@ export default function Home() {
 
           </div>
           <p className="animate-slide-up" style={{
-            fontSize: '2rem', letterSpacing: '0.05em', textTransform: 'uppercase',
-            color: 'var(--primary-pale)', marginBottom: '16px', animationDelay: '1s',
-            fontWeight: 600
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)', letterSpacing: '0.1em', textTransform: 'uppercase',
+            color: 'var(--white)', marginBottom: '8px', animationDelay: '0.8s',
+            fontWeight: 500, opacity: 0.9
+          }}>
+            Ganadipathi Tulsis Jain Engineering College
+          </p>
+          <p className="animate-slide-up" style={{
+            fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
+            color: 'var(--secondary-light)', marginBottom: '8px', animationDelay: '1s',
+            fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.3)'
           }}>
             Department of IT, AIDS & CSBS
           </p>
-          <div className="animate-slide-up" style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
+          <p className="animate-slide-up" style={{
+            fontFamily: "'Bicqne', 'Brush Script MT', 'Dancing Script', cursive",
+            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
+            color: 'var(--white)',
+            marginBottom: '24px', animationDelay: '1.2s',
+            textShadow: '0 4px 15px rgba(0,0,0,0.4)',
+            lineHeight: 1
+          }}>
+            Cognify
+          </p>
+          <div className="animate-slide-up" style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
             <img 
               src="/triquetra.png" 
               alt="TRIQUETRA'26" 
               style={{ 
-                height: '240px', 
+                height: 'clamp(160px, 25vw, 240px)', 
                 objectFit: 'contain', 
-                filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.4))' 
+                filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.5))',
+                transition: 'transform 0.3s ease'
               }} 
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </div>
-          <p className="animate-slide-up" style={{ color: 'var(--text-light)', fontSize: '1.1rem', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>
+          <p className="animate-slide-up" style={{ 
+            color: 'rgba(255, 255, 255, 0.85)', 
+            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', 
+            marginBottom: '40px', maxWidth: '650px', margin: '0 auto 40px auto',
+            lineHeight: 1.6, animationDelay: '1.4s'
+          }}>
             A secure, verified online examination for enrolled students of TRIQUETRA'26. Credentials are issued automatically upon registration.
           </p>
 
-          <div className="animate-slide-up flex justify-center gap-4" style={{ animationDelay: '0.4s', flexWrap: 'wrap' }}>
-            <Link to="/examiner/register" className="btn btn-mint btn-lg">
+          <div className="animate-slide-up flex justify-center gap-4" style={{ animationDelay: '1.6s', flexWrap: 'wrap' }}>
+            <Link to="/examiner/register" className="btn btn-mint btn-lg" style={{ minWidth: '200px' }}>
               Register as Student
             </Link>
             <Link to="/examiner/login" className="btn btn-outline btn-lg"
-              style={{ color: 'var(--secondary-light)', borderColor: 'var(--secondary-light)' }}>
+              style={{ color: 'var(--secondary-light)', borderColor: 'var(--secondary-light)', minWidth: '200px' }}>
               Student Login
             </Link>
             <Link to="/demo" className="btn btn-outline btn-lg"
-              style={{ color: 'rgba(255,255,255,0.7)', borderColor: 'rgba(255,255,255,0.35)', fontSize: '0.95rem' }}>
+              style={{ color: 'rgba(255,255,255,0.7)', borderColor: 'rgba(255,255,255,0.35)', fontSize: '0.95rem', minWidth: '200px' }}>
               See How It Works →
             </Link>
           </div>
@@ -104,7 +129,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px,1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
             {/* General Info */}
             <div className="card animate-slide-up">
               <div className="card-header" style={{ background: 'var(--primary-dark)' }}>
@@ -216,6 +241,9 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
             <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '64px', objectFit: 'contain', opacity: 0.8 }} />
           </div>
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>
+            Ganadipathi Tulsis Jain Engineering College
+          </p>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', color: 'var(--white)', marginBottom: '8px' }}>
             Department of IT, AIDS & CSBS
           </p>
