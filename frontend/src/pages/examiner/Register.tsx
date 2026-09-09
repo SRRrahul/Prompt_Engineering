@@ -122,7 +122,7 @@ export default function ExaminerRegister() {
             Student Registration
           </h1>
           <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
-            Department of IT, AIDS & CSBS
+            Department of IT, AI&DS and CSBS
           </p>
         </div>
 

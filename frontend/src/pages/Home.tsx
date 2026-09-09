@@ -274,7 +274,7 @@ export default function Home() {
             © {new Date().getFullYear()} Ganadipathy Tulsi's Jain Engineering College. All rights reserved.
           </p>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', color: 'var(--white)', marginBottom: '8px' }}>
-            Department of IT, AIDS & CSBS
+            Department of IT, AI&DS and CSBS
           </p>
           <p style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', marginBottom: '20px' }}>
             TRIQUETRA'26 — Online Assessment Portal

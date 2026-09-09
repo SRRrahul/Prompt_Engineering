@@ -51,7 +51,7 @@ const DEMO_STEPS = [
               <div key={f} style={{ marginBottom: '8px' }}>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '3px' }}>{f}</div>
                 <div style={{ background: 'white', border: '1px solid var(--primary-pale)', borderRadius: '6px', padding: '6px 10px', fontSize: '0.8rem', color: f === 'Password' ? 'transparent' : 'var(--text-mid)', textShadow: f === 'Password' ? '0 0 8px var(--text-mid)' : 'none' }}>
-                  {f === 'Full Name' ? 'Kamalesh D' : f === 'Email' ? 'kamal@gtec.edu' : f === 'Department' ? 'IT, AIDS & CSBS' : f === 'Username' ? 'kamalesh2024' : '••••••••'}
+                  {f === 'Full Name' ? 'Kamalesh D' : f === 'Email' ? 'kamal@gtec.edu' : f === 'Department' ? 'IT, AI&DS and CSBS' : f === 'Username' ? 'kamalesh2024' : '••••••••'}
                 </div>
               </div>
             ))}
@@ -209,7 +209,7 @@ export default function ExamDemo() {
         <div className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '48px', objectFit: 'contain', opacity: 0.8 }} />
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
-            <h1 className="brand-text-animated" style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '2px' }}>IT, AIDS & CSBS</h1>
+            <h1 className="brand-text-animated" style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '2px' }}>IT, AI&DS and CSBS</h1>
             <div className="navbar-subtitle">Online Examination Portal</div>
           </div>
         </div>

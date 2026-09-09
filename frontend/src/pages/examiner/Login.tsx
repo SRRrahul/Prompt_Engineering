@@ -39,7 +39,7 @@ export default function ExaminerLogin() {
             <img src="/triquetra.png" alt="TRIQUETRA'26" style={{ height: '120px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }} />
           </div>
           <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
-            Department of IT, AIDS & CSBS
+            Department of IT, AI&DS and CSBS
           </p>
         </div>
 
