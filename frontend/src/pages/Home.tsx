@@ -214,7 +214,7 @@ export default function Home() {
       }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-            <AtomLogo size={64} className="opacity-80" />
+            <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '64px', objectFit: 'contain', opacity: 0.8 }} />
           </div>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', color: 'var(--white)', marginBottom: '8px' }}>
             Department of IT, AIDS & CSBS
