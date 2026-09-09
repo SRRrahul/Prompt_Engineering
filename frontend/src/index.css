@@ -985,5 +985,19 @@ tr:hover td {
 
   .btn-lg {
     padding: 13px 28px;
+    width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  p {
+    line-height: 1.5 !important;
   }
 }

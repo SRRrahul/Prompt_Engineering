@@ -32,76 +32,81 @@ export default function Home() {
           </div>
           <p className="animate-slide-up" style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(1.2rem, 4vw, 1.8rem)', letterSpacing: '0.12em', textTransform: 'uppercase',
-            color: 'var(--white)', marginBottom: '10px', animationDelay: '0.8s',
-            fontWeight: 700, opacity: 0.95
+            fontSize: 'clamp(1rem, 4vw, 1.8rem)', letterSpacing: '0.08em', textTransform: 'uppercase',
+            color: 'var(--white)', marginBottom: '12px', animationDelay: '0.8s',
+            fontWeight: 700, opacity: 0.95,
+            lineHeight: 1.3
           }}>
             Ganadipathi Tulsis Jain Engineering College
           </p>
           <p className="animate-slide-up" style={{
-            fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
-            color: 'var(--secondary-light)', marginBottom: '8px', animationDelay: '1s',
-            fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.3)'
+            fontSize: 'clamp(1.2rem, 5vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
+            color: 'var(--secondary-light)', marginBottom: '16px', animationDelay: '1s',
+            fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+            lineHeight: 1.3
           }}>
-            Department of IT, AIDS & CSBS
+            Department of IT, AI&DS and CSBS
           </p>
           <p className="animate-slide-up" style={{
-            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+            fontSize: 'clamp(0.9rem, 3vw, 1.2rem)',
             color: 'rgba(255,255,255,0.7)',
             marginBottom: '16px', animationDelay: '1.1s',
-            textTransform: 'lowercase', letterSpacing: '0.2em', fontStyle: 'italic'
+            textTransform: 'lowercase', letterSpacing: '0.2em', fontStyle: 'italic',
+            lineHeight: 1.2
           }}>
             proudly presents
           </p>
           <p className="animate-slide-up" style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+            fontSize: 'clamp(2.2rem, 8vw, 4.5rem)',
             fontWeight: 900,
             marginBottom: '32px', animationDelay: '1.2s',
             background: 'linear-gradient(90deg, #00f2fe 0%, #4facfe 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 4px 30px rgba(0, 242, 254, 0.4)',
-            lineHeight: 1,
-            letterSpacing: '0.05em'
+            lineHeight: 1.1,
+            letterSpacing: '0.02em',
+            wordBreak: 'break-word'
           }}>
             TRIQUETRA'26
           </p>
           <div className="animate-slide-up" style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
-            <img 
-              src="/triquetra.png" 
-              alt="TRIQUETRA'26" 
-              style={{ 
-                height: 'clamp(160px, 25vw, 240px)', 
-                objectFit: 'contain', 
+            <img
+              src="/triquetra.png"
+              alt="TRIQUETRA'26"
+              style={{
+                height: 'clamp(160px, 25vw, 240px)',
+                objectFit: 'contain',
                 filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.5))',
                 transition: 'transform 0.3s ease'
-              }} 
+              }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </div>
           <p className="animate-slide-up" style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+            fontSize: 'clamp(1.5rem, 5vw, 3rem)',
             fontWeight: 800,
-            marginBottom: '32px', animationDelay: '1.3s',
+            marginBottom: '24px', animationDelay: '1.3s',
             color: 'var(--white)',
             textShadow: '0 2px 15px rgba(255,255,255,0.2)',
-            letterSpacing: '0.1em'
+            letterSpacing: '0.1em',
+            lineHeight: 1.2
           }}>
             COGNIFY
           </p>
-          <p className="animate-slide-up" style={{ 
-            color: 'rgba(255, 255, 255, 0.85)', 
-            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', 
+          <p className="animate-slide-up" style={{
+            color: 'rgba(255, 255, 255, 0.85)',
+            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
             marginBottom: '40px', maxWidth: '650px', margin: '0 auto 40px auto',
             lineHeight: 1.6, animationDelay: '1.4s'
           }}>
             A secure, verified online examination for enrolled students of TRIQUETRA'26. Credentials are issued automatically upon registration.
           </p>
 
-          <div className="animate-slide-up flex justify-center gap-4" style={{ animationDelay: '1.6s', flexWrap: 'wrap' }}>
+          <div className="hero-buttons animate-slide-up flex justify-center gap-4" style={{ animationDelay: '1.6s', flexWrap: 'wrap' }}>
             <Link to="/examiner/register" className="btn btn-mint btn-lg" style={{ minWidth: '200px' }}>
               Register as Student
             </Link>
@@ -123,7 +128,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px,1fr))', gap: '24px', textAlign: 'center' }}>
             {[
               { label: 'Questions', value: '8+', icon: '📋' },
-              { label: 'Duration', value: '60 min', icon: '⏱️' },
+              { label: 'Duration', value: '30 min', icon: '⏱️' },
               { label: 'Min. Words', value: '250', icon: '✍️' },
               { label: 'AI Verified', value: '100%', icon: '🤖' },
             ].map(stat => (
