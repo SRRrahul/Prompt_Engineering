@@ -37,7 +37,7 @@ export default function Home() {
             fontWeight: 700, opacity: 0.95,
             lineHeight: 1.3
           }}>
-            Ganadipathi Tulsis Jain Engineering College
+            Ganadipathy Tulsi's Jain Engineering College
           </p>
           <p className="animate-slide-up" style={{
             fontSize: 'clamp(1.2rem, 5vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
@@ -271,7 +271,7 @@ export default function Home() {
             <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '64px', objectFit: 'contain', opacity: 0.8 }} />
           </div>
           <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>
-            Ganadipathi Tulsis Jain Engineering College
+            © {new Date().getFullYear()} Ganadipathy Tulsi's Jain Engineering College. All rights reserved.
           </p>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', color: 'var(--white)', marginBottom: '8px' }}>
             Department of IT, AIDS & CSBS

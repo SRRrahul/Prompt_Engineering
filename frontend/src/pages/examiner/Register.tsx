@@ -169,7 +169,7 @@ export default function ExaminerRegister() {
                 <input
                   className="form-input"
                   type="text"
-                  placeholder="e.g. Ganadipathi Tulsis Jain Engineering College"
+                  placeholder="e.g. Ganadipathy Tulsi's Jain Engineering College"
                   value={form.collegeName}
                   onChange={handleChange('collegeName')}
                   required
