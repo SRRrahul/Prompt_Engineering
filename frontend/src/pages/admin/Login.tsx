@@ -40,7 +40,7 @@ export default function AdminLogin() {
       <div style={{ maxWidth: '440px', width: '100%', animation: 'slideUp 0.4s ease both' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <GtecLogo size={100} light />
+            <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '100px', objectFit: 'contain' }} />
           </div>
           <h1 style={{
             fontFamily: "'Playfair Display', serif",

@@ -310,7 +310,7 @@ export default function ExamInterface() {
         boxShadow: '0 2px 12px rgba(78,52,46,0.3)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <GtecLogo size={64} />
+          <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '64px', objectFit: 'contain' }} />
           <div>
             <div style={{ color: 'var(--white)', fontWeight: 700, fontSize: '0.95rem', fontFamily: "'Playfair Display', serif" }}>
               TRIQUETRA'26 Assessment
@@ -571,7 +571,7 @@ function InlineResult({ answeredCount, totalQuestions, violationCount, onDashboa
         <div className="card animate-slide-up" style={{ marginBottom: '24px' }}>
           <div style={{ background: 'linear-gradient(135deg, var(--primary-dark), var(--primary))', padding: '36px 28px', textAlign: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-              <GtecLogo size={88} />
+              <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '88px', objectFit: 'contain' }} />
             </div>
             <h1 style={{ color: 'white', fontSize: '1.6rem', marginBottom: '4px' }}>Examination Submitted</h1>
             <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 Online Assessment — GTEC</p>

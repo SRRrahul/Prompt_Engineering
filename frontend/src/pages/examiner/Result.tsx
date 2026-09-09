@@ -15,7 +15,7 @@ export default function ExaminerResult() {
           <div className="card animate-slide-up" style={{ overflow: 'hidden' }}>
             <div style={{ background: 'linear-gradient(135deg, var(--primary-dark), var(--primary))', padding: '36px 28px', textAlign: 'center' }}>
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-                <GtecLogo size={88} />
+                <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '88px', objectFit: 'contain' }} />
               </div>
               <h1 style={{ color: 'white', fontSize: '1.6rem', marginBottom: '4px' }}>Examination Completed</h1>
               <p style={{ color: 'var(--secondary-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 Online Assessment — GTEC</p>

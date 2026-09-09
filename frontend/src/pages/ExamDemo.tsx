@@ -207,7 +207,7 @@ export default function ExamDemo() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <AtomLogo size={48} />
+          <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '48px', objectFit: 'contain', opacity: 0.8 }} />
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
             <h1 className="brand-text-animated" style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '2px' }}>IT, AIDS & CSBS</h1>
             <div className="navbar-subtitle">Online Examination Portal</div>

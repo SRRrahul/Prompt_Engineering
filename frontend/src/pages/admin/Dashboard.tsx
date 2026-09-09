@@ -170,7 +170,7 @@ export default function AdminDashboard() {
               <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>TRIQUETRA'26 - Examination Management</p>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <GtecLogo size={68} />
+              <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '68px', objectFit: 'contain' }} />
             </div>
           </div>
 
