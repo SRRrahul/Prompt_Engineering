@@ -31,9 +31,10 @@ export default function Home() {
 
           </div>
           <p className="animate-slide-up" style={{
-            fontSize: 'clamp(1rem, 3vw, 1.2rem)', letterSpacing: '0.1em', textTransform: 'uppercase',
-            color: 'var(--white)', marginBottom: '8px', animationDelay: '0.8s',
-            fontWeight: 500, opacity: 0.9
+            fontFamily: "'Syne', sans-serif",
+            fontSize: 'clamp(1.2rem, 4vw, 1.8rem)', letterSpacing: '0.12em', textTransform: 'uppercase',
+            color: 'var(--white)', marginBottom: '10px', animationDelay: '0.8s',
+            fontWeight: 700, opacity: 0.95
           }}>
             Ganadipathi Tulsis Jain Engineering College
           </p>
@@ -45,14 +46,18 @@ export default function Home() {
             Department of IT, AIDS & CSBS
           </p>
           <p className="animate-slide-up" style={{
-            fontFamily: "'Bicqne', 'Brush Script MT', 'Dancing Script', cursive",
-            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
-            color: 'var(--white)',
-            marginBottom: '24px', animationDelay: '1.2s',
-            textShadow: '0 4px 15px rgba(0,0,0,0.4)',
-            lineHeight: 1
+            fontFamily: "'Orbitron', sans-serif",
+            fontSize: 'clamp(3rem, 10vw, 5rem)',
+            fontWeight: 900,
+            marginBottom: '32px', animationDelay: '1.2s',
+            background: 'linear-gradient(90deg, #00f2fe 0%, #4facfe 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 4px 30px rgba(0, 242, 254, 0.4)',
+            lineHeight: 1,
+            letterSpacing: '0.05em'
           }}>
-            Cognify
+            COGNIFY
           </p>
           <div className="animate-slide-up" style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
             <img 
@@ -133,7 +138,7 @@ export default function Home() {
             {/* General Info */}
             <div className="card animate-slide-up">
               <div className="card-header" style={{ background: 'var(--primary-dark)' }}>
-                <h3 style={{ fontSize: '1.1rem' }}> General Information</h3>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--white)', fontWeight: 600 }}> General Information</h3>
               </div>
               <div className="card-body">
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -162,7 +167,7 @@ export default function Home() {
             {/* Rules */}
             <div className="card animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <div className="card-header" style={{ background: 'var(--primary)' }}>
-                <h3 style={{ fontSize: '1.1rem' }}>Examination Rules & Restrictions</h3>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--white)', fontWeight: 600 }}>Examination Rules & Restrictions</h3>
               </div>
               <div className="card-body">
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
