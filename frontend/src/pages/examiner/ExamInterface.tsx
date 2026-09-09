@@ -297,7 +297,7 @@ export default function ExamInterface() {
       )}
 
       {/* Top Bar */}
-      <div style={{
+      <div className="exam-topbar" style={{
         background: 'var(--primary-dark)',
         padding: '0 24px',
         height: '64px',
@@ -309,7 +309,7 @@ export default function ExamInterface() {
         zIndex: 100,
         boxShadow: '0 2px 12px rgba(78,52,46,0.3)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="exam-topbar-info" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img src="/triquetra.png" alt="Triquetra Logo" style={{ height: '64px', objectFit: 'contain' }} />
           <div>
             <div style={{ color: 'var(--white)', fontWeight: 700, fontSize: '0.95rem', fontFamily: "'Playfair Display', serif" }}>
@@ -350,9 +350,9 @@ export default function ExamInterface() {
       </div>
 
       {/* Main Content */}
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
+      <div className="exam-layout" style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
         {/* Sidebar — Question Navigator */}
-        <div style={{
+        <div className="exam-sidebar" style={{
           width: '220px',
           flexShrink: 0,
           background: 'var(--white)',
@@ -363,9 +363,10 @@ export default function ExamInterface() {
           gap: '8px',
           overflowY: 'auto',
         }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-light)', marginBottom: '8px' }}>
+          <div className="exam-sidebar-title" style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-light)', marginBottom: '8px' }}>
             Questions
           </div>
+          <div className="exam-sidebar-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {questions.map((q, idx) => {
             const text = answers[q.id] || '';
             const wc = text.trim().split(/\s+/).filter(Boolean).length;
@@ -406,8 +407,9 @@ export default function ExamInterface() {
               </button>
             );
           })}
+          </div>
 
-          <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--accent-light)' }}>
+          <div className="exam-sidebar-footer" style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--accent-light)' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--text-light)', marginBottom: '8px', textAlign: 'center' }}>
               {answeredCount} / {questions.length} complete
             </div>
@@ -422,7 +424,7 @@ export default function ExamInterface() {
         </div>
 
         {/* Question Area */}
-        <div style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
+        <div className="exam-main" style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
           {currentQuestion && (
             <div style={{ maxWidth: '820px', margin: '0 auto' }}>
               {/* Question Header */}
