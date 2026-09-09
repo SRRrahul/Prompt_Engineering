@@ -7,6 +7,7 @@ interface FormState {
   name: string;
   email: string;
   department: string;
+  collegeName: string;
   year: string;
   username: string;
   password: string;
@@ -21,7 +22,7 @@ interface FieldErrors {
 
 export default function ExaminerRegister() {
   const navigate = useNavigate();
-  const [form, setForm] = useState<FormState>({ name: '', email: '', department: '', year: '', username: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState<FormState>({ name: '', email: '', department: '', collegeName: '', year: '', username: '', password: '', confirmPassword: '' });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -68,6 +69,7 @@ export default function ExaminerRegister() {
         name: form.name.trim(),
         email: form.email.trim(),
         department: form.department.trim(),
+        collegeName: form.collegeName.trim(),
         year: form.year.trim(),
         username: form.username.trim(),
         password: form.password,
@@ -161,15 +163,29 @@ export default function ExaminerRegister() {
                 />
               </div>
 
-              {/* Department */}
+              {/* College Name */}
               <div className="form-group">
-                <label className="form-label">Department / Roll Number*</label>
+                <label className="form-label">COLLEGE NAME *</label>
                 <input
                   className="form-input"
                   type="text"
-                  placeholder="e.g. Information technology"
+                  placeholder="e.g. Ganadipathi Tulsis Jain Engineering College"
+                  value={form.collegeName}
+                  onChange={handleChange('collegeName')}
+                  required
+                />
+              </div>
+
+              {/* Department */}
+              <div className="form-group">
+                <label className="form-label">DEPARTMENT *</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  placeholder="e.g. Information Technology"
                   value={form.department}
                   onChange={handleChange('department')}
+                  required
                 />
               </div>
 

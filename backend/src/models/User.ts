@@ -8,6 +8,7 @@ export interface IUser {
   username: string;
   passwordHash: string;
   department?: string;
+  collegeName?: string;
   year?: string;
   examStatus: string;
   registeredAt: string;
@@ -23,6 +24,7 @@ const UserSchema = new Schema<IUser>({
   username: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
   department: { type: String, default: '' },
+  collegeName: { type: String, default: '' },
   year: { type: String, default: '' },
   examStatus: { type: String, default: 'not_started' },
   registeredAt: { type: String, default: () => new Date().toISOString() },
