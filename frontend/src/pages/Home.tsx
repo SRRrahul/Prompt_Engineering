@@ -46,8 +46,16 @@ export default function Home() {
             Department of IT, AIDS & CSBS
           </p>
           <p className="animate-slide-up" style={{
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+            color: 'rgba(255,255,255,0.7)',
+            marginBottom: '16px', animationDelay: '1.1s',
+            textTransform: 'lowercase', letterSpacing: '0.2em', fontStyle: 'italic'
+          }}>
+            proudly presents
+          </p>
+          <p className="animate-slide-up" style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(3rem, 10vw, 5rem)',
+            fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
             fontWeight: 900,
             marginBottom: '32px', animationDelay: '1.2s',
             background: 'linear-gradient(90deg, #00f2fe 0%, #4facfe 100%)',
@@ -57,7 +65,7 @@ export default function Home() {
             lineHeight: 1,
             letterSpacing: '0.05em'
           }}>
-            COGNIFY
+            TRIQUETRA'26
           </p>
           <div className="animate-slide-up" style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
             <img 
@@ -73,6 +81,17 @@ export default function Home() {
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </div>
+          <p className="animate-slide-up" style={{
+            fontFamily: "'Orbitron', sans-serif",
+            fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+            fontWeight: 800,
+            marginBottom: '32px', animationDelay: '1.3s',
+            color: 'var(--white)',
+            textShadow: '0 2px 15px rgba(255,255,255,0.2)',
+            letterSpacing: '0.1em'
+          }}>
+            COGNIFY
+          </p>
           <p className="animate-slide-up" style={{ 
             color: 'rgba(255, 255, 255, 0.85)', 
             fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', 
