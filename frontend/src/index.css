@@ -967,8 +967,33 @@ tr:hover td {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .navbar-brand h1 {
-    font-size: 1.1rem;
+  .navbar {
+    height: auto;
+    padding: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .navbar-brand img {
+    height: 40px !important;
+  }
+
+  .brand-text-animated {
+    font-size: 1.3rem !important;
+  }
+
+  .navbar-subtitle {
+    font-size: 0.65rem !important;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .navbar-nav a {
+    font-size: 0.85rem;
+    padding: 6px 12px;
   }
 
   .page-content {

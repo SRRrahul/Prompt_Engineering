@@ -18,7 +18,7 @@ export default function Navbar({ variant = 'default', adminName, onAdminLogout }
       <Link to="/" className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <img src="/triquetra.png" alt="Triquetra Symbol" style={{ height: '52px', objectFit: 'contain', borderRadius: '8px', padding: '2px' }} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '4px' }}>
-          <h1 className="brand-text-animated" style={{ fontSize: '1.8rem', lineHeight: 1, marginBottom: '2px', fontFamily: "'Orbitron', sans-serif" }}>TRIQUETRA'26</h1>
+          <h1 className="brand-text-animated" style={{ lineHeight: 1, marginBottom: '2px', fontFamily: "'Orbitron', sans-serif" }}>TRIQUETRA'26</h1>
           <div className="navbar-subtitle">Department of IT, AIDS & CSBS</div>
         </div>
       </Link>
