@@ -75,7 +75,7 @@ export default function ExaminerRegister() {
         password: form.password,
       });
       setSuccess(true);
-      setTimeout(() => navigate('/examiner/login'), 2500);
+      setTimeout(() => navigate('/examiner/login'), 500);
     } catch (err: any) {
       const data = err.response?.data;
       if (data?.field === 'username') {

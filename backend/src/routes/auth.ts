@@ -36,7 +36,7 @@ router.post('/examiner/register', async (req: Request, res: Response) => {
       return res.status(409).json({ field: 'username', message: 'This username is already taken. Please choose another.' });
     }
 
-    const passwordHash = await bcrypt.hash(password, 12);
+    const passwordHash = await bcrypt.hash(password, 10);
     const now = new Date().toISOString();
 
     await User.create({

@@ -8,10 +8,9 @@ export default function Home() {
       <Navbar />
 
       {/* ── Hero Section ── */}
-      <section style={{
+      <section className="hero-section" style={{
         background: 'linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%)',
         color: 'white',
-        padding: '80px 24px 100px',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
@@ -32,18 +31,20 @@ export default function Home() {
           </div>
           <p className="animate-slide-up" style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(1rem, 4vw, 1.8rem)', letterSpacing: '0.08em', textTransform: 'uppercase',
+            fontSize: 'clamp(0.65rem, 2.8vw, 1.8rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
             color: 'var(--white)', marginBottom: '12px', animationDelay: '0.8s',
             fontWeight: 700, opacity: 0.95,
-            lineHeight: 1.3
+            lineHeight: 1.3,
+            whiteSpace: 'nowrap'
           }}>
             Ganadipathy Tulsi's Jain Engineering College
           </p>
           <p className="animate-slide-up" style={{
-            fontSize: 'clamp(1.2rem, 5vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
+            fontSize: 'clamp(0.9rem, 4vw, 2.5rem)', letterSpacing: '0.05em', textTransform: 'uppercase',
             color: 'var(--secondary-light)', marginBottom: '16px', animationDelay: '1s',
             fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-            lineHeight: 1.3
+            lineHeight: 1.3,
+            whiteSpace: 'nowrap'
           }}>
             Department of IT, AI&DS and CSBS
           </p>
@@ -58,7 +59,7 @@ export default function Home() {
           </p>
           <p className="animate-slide-up" style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(2.2rem, 8vw, 4.5rem)',
+            fontSize: 'clamp(1.8rem, 7vw, 4.5rem)',
             fontWeight: 900,
             marginBottom: '32px', animationDelay: '1.2s',
             background: 'linear-gradient(90deg, #00f2fe 0%, #4facfe 100%)',
@@ -67,7 +68,7 @@ export default function Home() {
             textShadow: '0 4px 30px rgba(0, 242, 254, 0.4)',
             lineHeight: 1.1,
             letterSpacing: '0.02em',
-            wordBreak: 'break-word'
+            whiteSpace: 'nowrap'
           }}>
             TRIQUETRA'26
           </p>

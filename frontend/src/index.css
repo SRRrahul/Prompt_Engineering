@@ -98,6 +98,10 @@ img {
   flex-direction: column;
 }
 
+.hero-section {
+  padding: 80px 24px 100px;
+}
+
 .items-center {
   align-items: center;
 }
@@ -967,6 +971,10 @@ tr:hover td {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 32px 16px 60px !important;
+  }
+
   .navbar {
     height: auto;
     padding: 12px;
@@ -1069,5 +1077,14 @@ tr:hover td {
 
   .exam-main {
     padding: 16px !important;
+  }
+
+  .form-textarea {
+    min-height: 180px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .exam-sidebar-footer {
+    display: none !important;
   }
 }
